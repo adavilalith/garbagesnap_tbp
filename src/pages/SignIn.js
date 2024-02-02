@@ -23,6 +23,9 @@ export default function SignIn() {
   //     return;
 
   // }
+  const [email,setEmail]=setState("")
+  const [password,setPassword]=useState("")
+
   return (
     <div>
     <GarbageSnapNavbar></GarbageSnapNavbar>
@@ -41,7 +44,7 @@ export default function SignIn() {
                         <Form.Label className="text-center">
                           Email address
                         </Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control type="email" placeholder="Enter email" onClick={(e)=>setEmail(e.target.value)}/>
                       </Form.Group>
 
                       <Form.Group
@@ -49,7 +52,7 @@ export default function SignIn() {
                         controlId="formBasicPassword"
                       >
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" placeholder="Password" onClick={(e)=>setPassword(e.target.value)} />
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
@@ -62,7 +65,7 @@ export default function SignIn() {
                         </p>
                       </Form.Group>
                       <div className="d-grid">
-                        <Button variant="dark" type="submit">
+                        <Button variant="dark" onClick={signinfunc}>
                           Login
                         </Button>
                       </div>
