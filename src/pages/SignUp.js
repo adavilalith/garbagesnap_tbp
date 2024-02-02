@@ -13,7 +13,7 @@ export default function SignUp() {
 
 
     const createUser = async ()=>{
-        if(email==""||password==""||confirmPassword==""){
+        if(email===""||password===""||confirmPassword===""){
             return;
         }
         if(password!=confirmPassword){
