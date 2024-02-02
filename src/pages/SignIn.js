@@ -1,10 +1,28 @@
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import GarbageSnapNavbar from "../components/Navbar";
-import React from 'react'
+import React,{useContext} from 'react'
 import { Link } from "react-router-dom";
-
+import {app, auth} from '../config/firebase'
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import {Context} from '../App.js'
 
 export default function SignIn() {
+  const [user,setUser]=useContext(Context);
+
+  // const signinfunc= async()=>{
+  //   try{
+  //     await signInWithEmailAndPassword(auth,email,password);
+  //     }
+  //     catch(err){
+  //         console.log(err);
+  //         alert("error\invalid");
+  //         return;
+  //     }
+  //     setUser(true);
+  //     alert(" Signed In");
+  //     return;
+
+  // }
   return (
     <div>
     <GarbageSnapNavbar></GarbageSnapNavbar>
