@@ -9,20 +9,20 @@ import {Context} from '../App.js'
 export default function SignIn() {
   const [user,setUser]=useContext(Context);
 
-  // const signinfunc= async()=>{
-  //   try{
-  //     await signInWithEmailAndPassword(auth,email,password);
-  //     }
-  //     catch(err){
-  //         console.log(err);
-  //         alert("error\invalid");
-  //         return;
-  //     }
-  //     setUser(true);
-  //     alert(" Signed In");
-  //     return;
+   const signinfunc= async()=>{
+     try{
+       await signInWithEmailAndPassword(auth,email,password);
+       }
+       catch(err){
+           console.log(err);
+           alert("error\invalid");
+       return;
+      }
+      setUser(true);
+       alert(" Signed In");
+       return;
 
-  // }
+   }
   const [email,setEmail]=setState("")
   const [password,setPassword]=useState("")
 
