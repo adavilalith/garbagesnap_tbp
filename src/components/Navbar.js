@@ -5,9 +5,24 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Context} from '../App.js'
 import {Link} from "react-router-dom"
-
+import { signOut } from 'firebase/auth';
+import {auth} from '../config/firebase.js'
+import { Button } from 'react-bootstrap';
 
 export default function GarbageSnapNavbar() {
+
+    const signoutfunc=async()=>{
+      try{
+        signOut(auth)
+      }
+      catch(er){
+        console.log(er)
+        return;
+      }
+      setUser(false);
+      alert("sign out");
+    }
+
     const [user,setUser]=useContext(Context);
     const AccountSignIn =()=>{
         if(user){
@@ -17,8 +32,8 @@ export default function GarbageSnapNavbar() {
               <NavDropdown.Item href="/Orders">Orders</NavDropdown.Item>
               <NavDropdown.Item href="/History">History</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/SignOut">
-                Sign Out
+              <NavDropdown.Item onClick={signoutfunc}>
+                <Button>Sign Out</Button>
               </NavDropdown.Item>
             </NavDropdown>
             )
@@ -26,7 +41,7 @@ export default function GarbageSnapNavbar() {
         else{
             return (
                 <Nav.Link>
-                    <Link to="/" style={{textDecoration: 'none',color: 'unset'}}>Sign In</Link>
+                    <Link to="/Signin" style={{textDecoration: 'none',color: 'unset'}}>Sign In</Link>
                 </Nav.Link>
             )
         }
@@ -55,7 +70,6 @@ export default function GarbageSnapNavbar() {
             <Nav.Link >
                 <Link to="/" style={{textDecoration: 'none',color: 'unset'}}>Contact Us</Link>
             </Nav.Link>
-            <Nav.Link >Clean Up</Nav.Link>
             {AccountSignIn()}
           </Nav>
           <Nav className="ms-auto">

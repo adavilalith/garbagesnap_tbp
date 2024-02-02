@@ -6,6 +6,8 @@ import React,{ useState } from 'react';
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home';
 import SendSnap from './pages/SendSnap';
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
 
 export const Context = React.createContext()
 
@@ -18,6 +20,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/SendSnap" element={<SendSnap/>}></Route>
+        <Route path="/SignIn" element={<SignIn/>}></Route>
+        <Route path="/SignUp" element={<SignUp/>}></Route>
       </Routes>
     </Context.Provider>
     </>
