@@ -47,7 +47,7 @@ export default function SignIn() {
                         <Form.Label className="text-center">
                           Email address
                         </Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" onClick={(e)=>setEmail(e.target.value)}/>
+                        <Form.Control type="email" placeholder="Enter email" onChange={(e)=>setEmail(e.target.value)}/>
                       </Form.Group>
 
                       <Form.Group
@@ -55,7 +55,7 @@ export default function SignIn() {
                         controlId="formBasicPassword"
                       >
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" onClick={(e)=>setPassword(e.target.value)} />
+                        <Form.Control type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
