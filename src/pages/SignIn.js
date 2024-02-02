@@ -23,7 +23,7 @@ export default function SignIn() {
        return;
 
    }
-  const [email,setEmail]=setState("")
+  const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
 
   return (
