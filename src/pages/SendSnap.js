@@ -102,7 +102,8 @@ export default function SendSnap() {
     return (
         <>
         <GarbageSnapNavbar/>
-        <Container>
+        <Container >
+            <Row className='d-flex justify-content-center align-items-center text-center mt-3'><h1><strong>Send Snap</strong></h1></Row>
             <Row>
                 <Col className='col-xxl-1 '></Col>
                 <Col className='col-10'>
@@ -140,8 +141,6 @@ export default function SendSnap() {
                 <Col className=''></Col>
             </Row>
         </Container>
-        
-        <Footer/>
         </>
     )
 }

@@ -13,62 +13,57 @@ export default function DragDropFile(props) {
         setImgUpload(e.dataTransfer.files[0]);
     }
 
-    const imgorfile=()=>{
         if(imgUpload){
             var url = URL.createObjectURL(imgUpload);
             return ( 
                 <>
-                <Container>
+                <Container className='bg-light m-2 d-flex flex-col justify-content-center align-items-center text-center' style={{width:'',height:'300px', border: '2px dashed #111',borderRadius:'10px'}}>
                     <Row className="d-flex justify-content-center align-items-center text-center">
-                        <img src={url} style={{width:'300px',}}></img>
+                        <img src={url} style={{height:'300px',width:'auto'}}></img>
                     </Row>
                     <Row>
-                        <Col></Col>
-                        <Col className='col-12'></Col>
-                
-                    <Col></Col>
-
                     </Row>
                 </Container>
+                <Col className=' m-2 d-flex flex-col justify-content-center align-items-center text-center' onClick={()=>setImgUpload(false)}><Button>Cancel</Button></Col>
                 </>
+                
             )
         }
         else{
             return (
                 <>
-                <Container>
+                <div className='bg-light m-2 d-flex flex-col justify-content-center align-items-center text-center' style={{width:'',height:'300px', border: '2px dashed #111',borderRadius:'10px'}}>
+                <Container  onDragOver={handleDrag} onDrop={handleDrop}>
                 <Row>
-                <h1 className='text-center h3'>Drap and Drop<br></br> image here</h1>
+                    <Col className='col-12'><h1 className='text-center h3'>Drap and Drop<br></br> image here</h1></Col>
                 </Row>
-                <Row className='mt-3'>
-                    <Col/>
-                    <Col className='col-12'>
                         <input 
                         type="file"
                         onChange={(e)=>{setImgUpload(e.target.files[0])}}
                         hidden
                         ref={inputRef}
                         />
-                        <Button className="btn-primary" onClick={()=>inputRef.current.click()}>Send Snap</Button></Col>
-                    <Col/>
-                </Row>
-                <Row>
+                <Row className='mt-3'>
+                    <Col className='col-1'/>
+                    <Col className='col-12'>
+                            <Button className="btn-primary" onClick={()=>inputRef.current.click()}>Send Snap</Button>
+                    </Col>
+                    <Col className='col-1'/>
                 </Row>
                 </Container>
-                
-                
+                </div>
                 </>
             )
         }
+        
+        
     }
-    return (
-    <>
-    <div className='bg-light m-2 d-flex flex-col justify-content-center align-items-center text-center' style={{width:'',height:'300px', border: '2px dashed #111',borderRadius:'10px'}} onDragOver={handleDrag} onDrop={handleDrop}>
-      {imgorfile()} 
-    </div>
-    <Col className='m-2 d-flex flex-col justify-content-center align-items-center '>
-    {imgUpload&&<Button className="btn-primary my-auto" onClick={()=>setImgUpload(null)}>Cancel</Button>}
-    </Col>
-    </>
-  )
-}
+    
+    
+    // <>
+    // <div className='bg-light m-2 d-flex flex-col justify-content-center align-items-center text-center' style={{width:'',height:'300px', border: '2px dashed #111',borderRadius:'10px'}} onDragOver={handleDrag} onDrop={handleDrop}>
+    //   {imgorfile()} 
+    // </div>
+    
+    // </>
+  

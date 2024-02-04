@@ -24,7 +24,7 @@ export default function GarbageSnapNavbar() {
     }
 
     const [user,setUser]=useContext(Context);
-    const AccountSignIn =()=>{
+    const AccountOrSignIn =()=>{
         if(user){
             return (
               <NavDropdown title="UserName" id="collapsible-nav-dropdown">
@@ -61,16 +61,16 @@ export default function GarbageSnapNavbar() {
             <Nav.Link >
                 <Link to="/SendSnap" style={{textDecoration: 'none',color: 'unset'}}>Send Snap</Link>
             </Nav.Link>
-            <Nav.Link >
+            <Nav.Link disabled>
                 <Link to="/" style={{textDecoration: 'none',color: 'unset'}}>Clean Up</Link>
             </Nav.Link>
             <Nav.Link >
-                <Link to="/" style={{textDecoration: 'none',color: 'unset'}}>Store</Link>
+                <Link to="/Store" style={{textDecoration: 'none',color: 'unset'}}>Store</Link>
             </Nav.Link>
-            <Nav.Link >
+            <Nav.Link disabled>
                 <Link to="/" style={{textDecoration: 'none',color: 'unset'}}>Contact Us</Link>
             </Nav.Link>
-            {AccountSignIn()}
+            {AccountOrSignIn()}
           </Nav>
           <Nav className="ms-auto">
           </Nav>
