@@ -30,7 +30,6 @@ export default function SendSnap() {
     const [location,setLocation]=useState("");
     const [desc,setDesc] = useState("");
 
-
     const db = getFirestore()
     const colRef = collection(db,'Complaints')
     const storage= getStorage()
@@ -83,11 +82,14 @@ export default function SendSnap() {
                         description: desc
                         });
                         console.log("DONE");
+                        if(imgURL){
+                            alert("uploaded")
+                        }
                         return;
+                        
                     })
                 .catch(()=>{
                     if(imgURL){
-                        
                     }
                     else{
                         alert("url invalid")
