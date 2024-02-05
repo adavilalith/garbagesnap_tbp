@@ -12,7 +12,6 @@ import Store from './pages/Store'
 import ProductPage from './pages/ProductPage'
 import placeholderimg from './res/ProductPlaceholder.jpg'
 
-
 export const Context = React.createContext()
 
 let ProductData={title:"Product Name",
