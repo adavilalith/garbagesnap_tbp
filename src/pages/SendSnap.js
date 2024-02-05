@@ -67,39 +67,27 @@ export default function SendSnap() {
             }
         )
     }
-
-    const uploadComplaint= ()=>{
+    const imgURLEffect = useEffect(()=>{
+        if(!imgURL){return;}
+        addDoc(colRef,{
+            imgURL: imgURL,
+            location: location,
+            description: desc
+            });
+        alert("uploaded")
+        return;
+    },[imgURL])
+    const uploadComplaint= async()=>{
         if(location===""){
             alert("please allow location access");
             return;
         }
         else{
             uploadImage()
-                .then(()=>{
-                    addDoc(colRef,{
-                        imgURL: imgURL,
-                        location: location,
-                        description: desc
-                        });
-                        console.log("DONE");
-                        if(imgURL){
-                            alert("uploaded")
-                        }
-                        return;
-                        
-                    })
-                .catch(()=>{
-                    if(imgURL){
-                    }
-                    else{
-                        alert("url invalid")
-                    }
-                })
         }
 
 
     }
-
 
     return (
         <>
