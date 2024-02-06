@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react'
+import React,{ useState, useEffect, useContext } from 'react'
 import GarbageSnapNavbar from '../components/Navbar'
 import { Button, Col, Container, Row, Form } from 'react-bootstrap'
 import DragDropFile from '../components/DragDropFile'
@@ -10,10 +10,15 @@ import {
     getDownloadURL,
     getStorage, ref, uploadBytes
 } from 'firebase/storage'
-import app from '../config/firebase'
+import {app,db} from '../config/firebase'
+import { Context } from '../App'
+
+
 export default function SendSnap() {
+    const [user,setUser]=useContext(Context)
     const date = new Date();
     const getGeolocation = ()=>{
+        setUser(user);
         if(navigator.geolocation){
             navigator.geolocation.watchPosition((position)=>{
                 setLocation(`${position.coords.latitude},${position.coords.longitude}`);
@@ -26,11 +31,10 @@ export default function SendSnap() {
 
     const [imgUpload,setImgUpload]=useState(null);
     
-    const [imgURL,setImgURL]=useState(null);
+    const [imgURL,setImgURL]=useState("");
     const [location,setLocation]=useState("");
     const [desc,setDesc] = useState("");
 
-    const db = getFirestore()
     const colRef = collection(db,'Complaints')
     const storage= getStorage()
 
@@ -68,11 +72,12 @@ export default function SendSnap() {
         )
     }
     const imgURLEffect = useEffect(()=>{
-        if(!imgURL){return;}
+        if(imgURL===""){return;}
         addDoc(colRef,{
             imgURL: imgURL,
             location: location,
-            description: desc
+            description: desc,
+            userID : (user===false)?"":user.uid
             });
         alert("uploaded")
         return;

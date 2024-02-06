@@ -20,10 +20,11 @@ export default function GarbageSnapNavbar() {
         return;
       }
       setUser(false);
+      setUserDB(false);
       alert("sign out");
     }
 
-    const [user,setUser]=useContext(Context);
+    const [user,setUser,userDB,setUserDB]=useContext(Context);
     const AccountOrSignIn =()=>{
         if(user){
             return (

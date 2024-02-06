@@ -1,39 +1,62 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext,useEffect, useRef} from 'react'
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import GarbageSnapNavbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import {app, auth} from '../config/firebase'
 import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth'
 import {Context} from '../App.js'
-
+import { getDocs, addDoc, collection } from 'firebase/firestore';
+import { db } from '../config/firebase';
 export default function SignUp() {
 
 
-    const [user,setUser]=useContext(Context);
-
-
+    const [user,setUser,userDB,setUserDB,cart,setCart]=useContext(Context);
     const createUser = async ()=>{
         if(email===""||password===""||confirmPassword===""){
             return;
         }
-        if(password!=confirmPassword){
+        if(password!==confirmPassword){
             alert("passwords do not match! try again.")
             return;
         }
         else{
             try{
-            await createUserWithEmailAndPassword(auth,email,password);
+            const temp =await createUserWithEmailAndPassword(auth,email,password)
+            setUser(temp.user);
             }
             catch(err){
                 console.log(err);
                 return;
             }
-            setUser(true);
             alert(" Signed In");
             return;
         }
 
     }
+
+    useEffect(()=>{
+      const handleSignUpDB=async()=>{
+        if(user){
+            const userRef=collection(db,'Users')
+            addDoc(userRef,{
+              email:email,
+              password:password,
+              uid: user.uid,
+            }).then((userData)=>{
+              userData.forEach((doc)=>{setUserDB({...doc.data(), id : doc.id})})
+            })
+
+        }
+      }
+      handleSignUpDB();
+    },[user,setUser])
+
+    useEffect(()=>{
+      if(userDB){
+      getDocs(collection(db,`Users/${userDB.id}/cart`)).then((temp)=>setCart(temp.map((doc)=>({...doc.data(), id : doc.id}))))
+      }
+    },[userDB])
+
 
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
@@ -61,14 +84,14 @@ export default function SignUp() {
 
                       <Form.Group
                         className="mb-3"
-                        controlId="formBasicPassword"
+                        controlId="formBasicPassword1"
                       >
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
-                        controlId="formBasicPassword"
+                        controlId="formBasicPassword2"
                       >
                         <Form.Label>Confirm Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" onChange={(e)=>setConfirmPassword(e.target.value)}/>

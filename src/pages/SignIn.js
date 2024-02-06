@@ -1,34 +1,57 @@
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import GarbageSnapNavbar from "../components/Navbar";
-import React,{useContext,useState} from 'react'
+import React,{useContext,useState,useEffect} from 'react'
 import { Link } from "react-router-dom";
 import {app, auth} from '../config/firebase'
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import { db } from "../config/firebase";
 import {Context} from '../App.js'
-import { collectionGroup } from "firebase/firestore";
+import {addDoc,collection,collectionGroup, getDoc,getDocs,query,where,} from "firebase/firestore";
 
 export default function SignIn() {
-  const [user,setUser]=useContext(Context);
+  const [user,setUser,userDB,setUserDB,cart,setCart]=useContext(Context);
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
    const signinfunc = async()=>{
      try{
-      await signInWithEmailAndPassword(auth,email,password);
-      console.log(email,password)
+      const temp = await signInWithEmailAndPassword(auth,email,password);
+      setUser(temp.user);
 
     }
        catch(err){
-           alert("error\invalid");
+           alert("error invalid");
           return;
       }
-       setUser(true);
        alert(" Signed In");
        return;
 
    }
-   console.log(email,password)
+
+   useEffect(()=>{
+    const handleSignInDB=async()=>{
+      if(user){
+          const q = query(collection(db,'Users'),where("uid","==",user.uid))
+          const userData = await getDocs(q);
+          // console.log(userData)
+          userData.forEach((doc)=>{setUserDB({...doc.data(), id : doc.id})})
+
+        }
+
+
+    }
+    // console.log(userDB,cart)
+    handleSignInDB();
+  },[user,setUser])
+  
   
 
+
+  useEffect(()=>{
+      if(userDB){
+      // getDocs(collection(db,`Users/${userDB.id}/cart`)).then((temp)=>console.log(temp ))
+      getDocs(collection(db,`Users/${userDB.id}/cart`)).then((temp)=>setCart(temp.docs.map((doc)=>({...doc.data(), id : doc.id}))))
+      }
+  },[userDB])
   return (
     <div>
     <GarbageSnapNavbar></GarbageSnapNavbar>
