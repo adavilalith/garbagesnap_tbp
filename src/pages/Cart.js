@@ -3,7 +3,7 @@ import GarbageSnapNavbar from '../components/Navbar'
 import { Context } from '../App';
 import { db } from '../config/firebase';
 import { getDocs,collection, query, where,getDoc,doc, deleteDoc } from 'firebase/firestore';
-import { Button, Container,Row,Col } from 'react-bootstrap';
+import { Button, Container,Row,Col,Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 export default function Cart() {
     const navigate=useNavigate()
@@ -77,29 +77,41 @@ export default function Cart() {
     }
 
     return (
-        <div>
+        <>        
         <GarbageSnapNavbar/>
         <Container className='mt-5'>
-        <Row >
-            <Col className='col-1' style={{border:'1px solid black'}}><strong>S.No</strong></Col >
-            <Col className='col-6' style={{border:'1px solid black'}}><strong>Product Name</strong></Col>
-            <Col className='col-1' style={{border:'1px solid black'}}><strong>Quantity</strong></Col>
-            <Col className='col-2' style={{border:'1px solid black'}}><strong>Price</strong></Col>
-            <Col style={{border:'1px solid black'}}><strong>Remove</strong></Col>
-        </Row>
-        {cartProducts&&cartProducts.map((product,idx)=>{
-          return (<Row  className='py-4'>
-                    <Col className='col-1' style={{border:'1px solid black'}}>{idx+1}</Col>
-                    <Col className='col-6' style={{border:'1px solid black'}}>{product.title}</Col>
-                    <Col className='col-1' style={{border:'1px solid black'}}>{product.quantity}</Col>
-                    <Col className='col-2' style={{border:'1px solid black'}}>{product.price*product.quantity}</Col>
-                    <Col className='d-flex justify-content-center'style={{border:'1px solid black'}} onClick={()=>removeProductFromCart(product)}><Button>Remove</Button></Col>
-                  </Row>
-                )
-            }
-        )
-        }
-        </Container>    
-        </div>
+                <h1 className='display-2 my-3'><strong>Cart</strong></h1>
+                {!cartProducts.length&&(<h3>No Items in Cart</h3>)}
+
+                {/* <FontAwesomeIcon icon="fa-regular fa-cart-shopping" /> */}
+                {cartProducts && cartProducts.map((product, idx) => (
+                    <Row key={idx} className="mb-4 ">
+                        <Card className="w-100 my-2 h-100 rounded-0 border p-3 mb-2 bg-light bg-gradient rounded-5">
+                            <Card.Body className="d-flex flex-column">
+                                <Card.Title style={{ textAlign: 'start' }}><h4>{product.title}</h4></Card.Title>
+                                <hr />
+                                <Row>
+                                    <Col >
+                                        <Card.Text><b>Quantity :</b> {product.quantity}</Card.Text>
+                                        <Card.Text><b>Price :</b> {product.price * product.quantity}</Card.Text>
+                                    </Col>
+                                    
+                                    <Col style={{ borderLeft: '1px solid black', textAlign: 'center' }} >
+                                        {product.ShortDescription}
+                                    </Col>
+                                </Row>
+
+                                <hr />  
+
+                                <Col xs="auto" className="mx-auto">
+                                    <Button variant="danger" className='mt-auto' onClick={() => removeProductFromCart(product)}>Remove</Button>
+                                </Col>
+                            </Card.Body>
+                        </Card>
+                    </Row>
+                ))}
+            </Container>
+            </>
+
     )
 }
