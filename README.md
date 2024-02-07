@@ -8,7 +8,7 @@ This project is a web application built with React.js and Firebase, aimed at add
 
 The website can we viewd at the link below.
 
--**site**: https://garbagesnap-tbp.vercel.app/
+- **site**: https://garbagesnap-tbp.vercel.app/
 
 We strive to ensure our website is bug-free, but if you encounter any issues or unexpected behavior, please let us know! Your feedback is invaluable in helping us improve our project. 
 
@@ -20,6 +20,25 @@ We strive to ensure our website is bug-free, but if you encounter any issues or 
 - User authentication and authorization
 - Responsive design with Bootstrap UI library
 - Integration with Firebase backend for real-time data storage and management
+
+## Website OverView
+
+- **Home Page**
+
+<img src="https://drive.google.com/uc?export=view&id=14uG6sMHVdZjRwcdq0SUrwcPtUymO3ejn" style="width: 650px; max-width: 100%; height: auto" />
+
+- **Send** **Snap**
+
+<img src="https://drive.google.com/uc?export=view&id=1rheRsxXca8L1YPACSs8gmThQ0r7v9Y2w" style="width: 650px; max-width: 100%; height: auto" />
+
+- **Clean** **up**
+
+<img src="https://drive.google.com/uc?export=view&id=1zH4oQdWrEgwxbShwvqI3Pz_GAwDFmdRs" style="width: 650px; max-width: 100%; height: auto" />
+
+- **Store**
+
+<img src="https://drive.google.com/uc?export=view&id=1A882bZQt3Itq5Gtut_KEDML_dngapt5J" style="width: 650px; max-width: 100%; height: auto" />
+
 
 ## Installation
 
