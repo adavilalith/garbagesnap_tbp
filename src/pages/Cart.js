@@ -12,18 +12,20 @@ export default function Cart() {
 
 
     const fetchCart=async()=>{
-        console.log(cart)
-
+        console.log("fetch start",cart)
         if(!user){
             alert("please login");
             return;
         }
         await getDocs(collection(db,`Users/${userDB.id}/cart`)).then((temp)=>setCart(temp.docs.map((doc)=>({...doc.data(), id : doc.id}))))
-        console.log(cart)
+        console.log("fetch end",cart)
     }
     const updateCartProducts=async()=>{
         const ids=cart.map((p)=>p.productID)
-        if(ids==0){return;}
+        if(ids==0){
+            setCartProducts([])
+            return;
+        }
         const q = query(collection(db,'Products'),where("__name__",'in',ids))
         const querySnapshot = await getDocs(q)
         const documentsData = querySnapshot.docs.map((doc) => ({
@@ -37,7 +39,6 @@ export default function Cart() {
                 }
             } 
         }))
-        console.log(cartProducts)
     }
     
     useEffect(()=>{
@@ -56,14 +57,23 @@ export default function Cart() {
         }
         if(cart && Object.keys(cart).length!=0){
         updateCartProducts();
+        console.log(cart,cartProducts)
         }
     },[cart])
 
     const removeProductFromCart= async (p)=>{
+        if(cartProducts.length==1){
+        await deleteDoc(doc(db,'Users',userDB.id,'cart',p.id))
+        setCart([]);
+        setCartProducts([]);
+        return;
+        }
+        console.log("delete start")
         await deleteDoc(doc(db,'Users',userDB.id,'cart',p.id))
         await fetchCart();
         await updateCartProducts();
         console.log("removed")
+        console.log("remove",cart,cartProducts)
     }
 
     return (
