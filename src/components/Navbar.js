@@ -1,80 +1,73 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import {Context} from '../App.js'
-import {Link,useNavigate} from "react-router-dom"
+import { Context } from '../App.js';
+import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
-import {auth} from '../config/firebase.js'
+import { auth } from '../config/firebase.js';
 import { Button } from 'react-bootstrap';
 
 export default function GarbageSnapNavbar() {
-    const navigate=useNavigate()
-    const signoutfunc=async()=>{
-      try{
-        signOut(auth)
-      }
-      catch(er){
-        console.log(er)
-        return;
-      }
+  const navigate = useNavigate();
+
+  const signoutfunc = async () => {
+    try {
+      await signOut(auth);
       setUser(false);
       setUserDB(false);
-      navigate('/')
+      navigate('/');
+    } catch (err) {
+      console.log(err);
+      return;
     }
+  };
 
-    const [user,setUser,userDB,setUserDB]=useContext(Context);
-    const AccountOrSignIn =()=>{
-        if(user){
-            return (
-              <NavDropdown title="UserName" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="/Profile">Account</NavDropdown.Item>
-              <NavDropdown.Item href="/Orders">Orders</NavDropdown.Item>
-              <NavDropdown.Item href="/History">History</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={signoutfunc}>
-                <Button>Sign Out</Button>
-              </NavDropdown.Item>
-            </NavDropdown>
-            )
-        }
-        else{
-            return (
-                <Nav.Link>
-                    <Link to="/Signin" style={{textDecoration: 'none',color: 'unset'}}>Sign In</Link>
-                </Nav.Link>
-            )
-        }
+  const [user, setUser, userDB, setUserDB] = useContext(Context);
+
+  const AccountOrSignIn = () => {
+    if (user) {
+      return (
+        <NavDropdown title="Account" id="collapsible-nav-dropdown">
+          <NavDropdown.Item href="/Profile">Profile</NavDropdown.Item>
+          <NavDropdown.Item href="/Orders">Orders</NavDropdown.Item>
+          <NavDropdown.Item href="/History">History</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item onClick={signoutfunc}>
+            <Button variant="outline-danger">Sign Out</Button>
+          </NavDropdown.Item>
+        </NavDropdown>
+      );
+    } else {
+      return (
+        <Nav.Link>
+          <Link to="/Signin" style={{ textDecoration: 'none', color: '#fff' }}>
+            <Button variant="outline-light">Sign In</Button>
+          </Link>
+        </Nav.Link>
+      );
     }
+  };
+
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        
+        <Navbar.Brand>
+          <Link to="/" style={{ textDecoration: 'none', color: '#fff' }}>
+            Garbage Snap
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="mx-auto">
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/SendSnap" className="nav-link">Send Snap</Link>
+            <Link to="/" className="nav-link" disabled>Clean Up</Link>
+            <Link to="/Store" className="nav-link">Store</Link>
+            <Link to="/" className="nav-link" disabled>Contact Us</Link>
           </Nav>
-          <Nav>
-            <Nav.Link >
-                <Link to="/" style={{textDecoration: 'none',color: 'unset'}}>Home</Link>
-            </Nav.Link>
-            <Nav.Link >
-                <Link to="/SendSnap" style={{textDecoration: 'none',color: 'unset'}}>Send Snap</Link>
-            </Nav.Link>
-            <Nav.Link disabled>
-                <Link to="/" style={{textDecoration: 'none',color: 'unset'}}>Clean Up</Link>
-            </Nav.Link>
-            <Nav.Link >
-                <Link to="/Store" style={{textDecoration: 'none',color: 'unset'}}>Store</Link>
-            </Nav.Link>
-            <Nav.Link disabled>
-                <Link to="/" style={{textDecoration: 'none',color: 'unset'}}>Contact Us</Link>
-            </Nav.Link>
-            {AccountOrSignIn()}
-          </Nav>
-          <Nav className="ms-auto">
-          </Nav>
+          <Nav>{AccountOrSignIn()}</Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
