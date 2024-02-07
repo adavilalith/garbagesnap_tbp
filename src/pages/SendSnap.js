@@ -98,7 +98,7 @@ export default function SendSnap() {
         <>
         <GarbageSnapNavbar/>
         <Container >
-            <Row className='d-flex justify-content-center align-items-center text-center mt-3'><h1><strong>Send Snap</strong></h1></Row>
+            <Row className='d-flex justify-content-center align-items-center text-center mt-3'><h1 className='display-3 mt-2'><strong>Send Snap</strong></h1></Row>
             <Row>
                 <Col className='col-xxl-1 '></Col>
                 <Col className='col-10'>
@@ -109,7 +109,7 @@ export default function SendSnap() {
                     </Row>
                     <Row className='mt-5'>
                         <Col className='d-flex justify-content-center align-items-center text-center'>
-                            <Button className='btn-primary' onClick={getGeolocation}>Get Geolocation</Button>
+                            <Button className='btn-dark' onClick={getGeolocation}>Get Geolocation</Button>
                         </Col>
                     </Row>
                     <Row>
@@ -129,11 +129,11 @@ export default function SendSnap() {
                     </Row>
                     <Row className='my-5'>
                         <Col className='d-flex justify-content-center align-items-center text-center'>
-                            <Button className='btn-primary' onClick={uploadComplaint}>Submit Snap</Button>
+                            <Button className='btn-dark' onClick={uploadComplaint}><h3>Send Snap</h3></Button>
                         </Col>
                     </Row>
                 </Col>
-                <Col className=''></Col>
+                <Col className='mb-5'></Col>
             </Row>
         </Container>
         </>

@@ -63,7 +63,7 @@ export default function GarbageSnapNavbar() {
           <Nav className="mx-auto">
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/SendSnap" className="nav-link">Send Snap</Link>
-            <Link to="/" className="nav-link" disabled>Clean Up</Link>
+            <Link to="/CleanUp" className="nav-link" >Clean Up</Link>
             <Link to="/Store" className="nav-link">Store</Link>
             <Link to="/" className="nav-link" disabled>Contact Us</Link>
           </Nav>

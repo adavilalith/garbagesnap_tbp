@@ -7,8 +7,14 @@ import { Context } from '../App'
 import { db } from '../config/firebase'
 import { collection,addDoc } from 'firebase/firestore'
 import LoginModal from '../components/LoginModal'
+import cartIcon from '../res/cartIcon.png'
+
+
 export default function ProductPage() {
-    const imgStyle={width:'30vw'}
+    let imgStyle={maxWidth:'30vw'}
+    if(window.screen.width<600){
+        imgStyle={maxWidth:`${Math.floor(window.screen.width*0.8)}px`}
+    }
     const modalRef=useRef()
     const navigate=useNavigate()
     const [currProduct,setCurrProduct,ListOfProductData]=useContext(ProductInfo);
@@ -55,15 +61,18 @@ export default function ProductPage() {
             <Row>
                 <Col>
                 <Container style={{margin:'10px' ,width: '80vw'}} >
-            <Row className='my-1'>
+            <Row className='my-2 mt-4'>
                 <Col className='d-flex justify-context-left align-items-left'>
                     <Link to='/store'>
-                    <Button className='btn-dark'>Back</Button>
+                    <Button className='btn-dark'><p className='mx-2 h4  '>Back</p></Button>
                     </Link>
                 </Col>
                 <Col xs={6} lg={8}></Col>
-                <Col>
-                        <Button className='btn-dark ms-right' onClick={handleCartBtnClick}># Cart</Button>
+                <Col className='my-2'>
+                    <Button className='btn-dark  d-flex flex-wrap' onClick={handleCartBtnClick}>
+                        <img src={cartIcon} width={30}/>
+                        <p className='ms-2 h4'>Cart</p>
+                    </Button>
                 </Col>
             </Row>
             <Row className='d-sm-flex flex-column'>

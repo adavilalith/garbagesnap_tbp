@@ -8,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { db } from '../config/firebase';
 import { setDoc,doc } from 'firebase/firestore';
 import LoginModal from '../components/LoginModal';
+import cartIcon from '../res/cartIcon.png'
 
 
 export default function Store() {
@@ -29,15 +30,18 @@ export default function Store() {
         <LoginModal buttonRef={modalRef}/>
         <ProductInfo.Provider value={[currProduct,setCurrProduct]}>
         <GarbageSnapNavbar/>
-        <Container className='my-2'>
+        <Container className='my-2' >
             <Row className='mt-3 d-xs-flex jusify-content-left'>
                 <Col><p className='display-2'><strong>Products</strong></p></Col>
                 <Col xs={6} lg={6}></Col>
                 <Col>
-                    <Button className='btn-dark mt-4' onClick={handleCartBtnClick}># Cart</Button>
+                    <Button className='btn-dark mt-4 d-flex flex-wrap' onClick={handleCartBtnClick}>
+                        <img src={cartIcon} width={30}/>
+                        <p className='ms-2 h5'>Cart</p>
+                    </Button>
                 </Col>
             </Row>
-            <Row >
+            <Row style={{maxWidth:'100%'}}>
                 <Col className=' col-12 d-flex flex-wrap' style={{width:'100%'}}>
                     <Container className='d-flex flex-wrap'>
                         {

@@ -46,7 +46,7 @@ export default function DragDropFile(props) {
                 <Row className='mt-3'>
                     <Col className='col-1'/>
                     <Col className='col-12'>
-                            <Button className="btn-primary" onClick={()=>inputRef.current.click()}>Send Snap</Button>
+                            <Button className="btn-dark" onClick={()=>inputRef.current.click()}>Send Snap</Button>
                     </Col>
                     <Col className='col-1'/>
                 </Row>

@@ -5,7 +5,11 @@ import Hero from '../components/Hero'
 import Footer from '../components/Footer'
 import { Col, Container, Card, Row, CardGroup, Button} from 'react-bootstrap'
 import placeholderimg from '../res/ProductPlaceholder.jpg'
-import { Link } from 'react-router-dom'
+import { Link, resolvePath } from 'react-router-dom'
+import trashIcon from '../res/trashbinIcon.png'
+import recycleIcon from '../res/recycleIcon.png'
+import resolvedIcon from '../res/resolvedIcon.png'
+
 export default function Home() {
   return (
     <>
@@ -14,7 +18,21 @@ export default function Home() {
         <div className='display-3 text-center mt-5'><strong>About Us</strong></div>
         <div className="text-center my-5 px-5">
             <p className='px-md-5 mx-md-5 fs-5'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam itaque quibusdam voluptas perferendis dignissimos, atque sed <br></br>rerum adipisci esse<br></br> omnis laudantium odit suscipit deserunt ducimus repudiandae nemo qui inventore excepturi unde nobis corrupti cumque praesentium doloremque?<br></br> Consequatur quidem quod iure ea, accusamus dolores blanditiis veniam. Possimus sapiente qui consequatur sint fugiat laborum cupiditate veritatis debitis corporis reiciendis non vel incidunt tempora, molestias aspernatur<br></br> rem dolore minima placeat modi quasi quidem sit ratione nulla veniam? Ipsam deserunt totam ipsum facilis est, dolor dolores adipisci rem quam et quo ad numquam accusantium aut in quibusdam optio blanditiis soluta, beatae autem mollitia quia!
+                
+Welcome to <b>Garbage Snap</b>, your central hub for making Hyderabad cleaner and greener. We believe in the power of community action to tackle the city's waste management challenges head-on.
+<br></br>
+<br></br>
+Through our platform, citizens like you can easily report garbage collection complaints, enabling us to identify problem areas and take targeted action. But we don't stop there. We also provide a hassle-free clean-up booking service, empowering individuals and groups to organize and participate in neighborhood clean-up efforts.
+<br></br>
+<br></br>
+In addition to our cleanup initiatives, we're excited to introduce our online store, showcasing a diverse range of products crafted from recycled materials. Each purchase not only promotes sustainability but also supports local artisans and entrepreneurs dedicated to environmental conservation.
+<br></br>
+<br></br>
+
+Join us in our mission to transform Hyderabad into a cleaner, healthier, and more vibrant city. Together, we can turn waste into opportunity and create a brighter future for all.
+<br></br>
+
+Let's make Hyderabad shine brighter than ever before!
             </p>
         </div>
         {/* <GarbageSnapCarousel/> */}
@@ -22,8 +40,12 @@ export default function Home() {
         <Container className='my-4 d-flex justify-content-center align-items-center h-100 text-center'>
             <Row >
                 <Col className='my-5 d-flex justify-content-center align-items-center h-100 text-center'>
-                    <Card style={{ width: '18rem', height: '15rem' } }>
-                    {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+                    <Card style={{ width: '18rem', height: '20rem' } }>
+                    <Row className='mt-5'>
+                        <Col/>
+                          <Col><img src={trashIcon} width={50}/></Col>
+                        <Col/>
+                      </Row>
                     <Card.Body>
                         <Card.Title ><p className='h3'>127,000 Kgs+<br></br>Collected</p></Card.Title>
                         <Card.Text className='mt-4'>
@@ -33,8 +55,12 @@ export default function Home() {
                     </Card>
                 </Col >
                 <Col className='my-5 d-flex justify-content-center align-items-center h-100 text-center'>
-                    <Card style={{ width: '18rem', height: '15rem' }}>
-                    {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+                    <Card style={{ width: '18rem', height: '20rem' }}>
+                      <Row className='mt-5'>
+                        <Col/>
+                        <Col><img src={recycleIcon} width={50}/></Col>
+                        <Col/>
+                      </Row>
                     <Card.Body>
                         <Card.Title ><p className='h3'>57000 Kgs+<br></br> Recycled</p></Card.Title>
                         <Card.Text className='mt-4'>
@@ -44,8 +70,12 @@ export default function Home() {
                     </Card>
                 </Col>
                 <Col className='my-5 d-flex justify-content-center align-items-center h-100 text-center'>
-                    <Card style={{ width: '18rem', height: '15rem' }}>
-                    {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+                    <Card style={{ width: '18rem', height: '20rem' }}>
+                    <Row   className='mt-5'>
+                        <Col/>
+                        <Col><img src={resolvedIcon} width={50}/></Col>
+                        <Col/>
+                      </Row>
                     <Card.Body>
                         <Card.Title><p className='h3'>14000+ Snaps<br></br> resolved</p></Card.Title>
                         <Card.Text>
@@ -86,7 +116,7 @@ export default function Home() {
           </Card.Text>
         </Card.Body>
         <Card.Footer>
-                    <Link to="/Home">
+                    <Link to="/CleanUp">
                             <Button className='btn-dark'>Clean Up</Button>
                     </Link>
         </Card.Footer>

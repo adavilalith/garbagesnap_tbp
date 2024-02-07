@@ -14,6 +14,7 @@ import placeholderimg from './res/ProductPlaceholder.jpg'
 import { collection, doc ,getDocs, setDoc} from 'firebase/firestore';
 import { db } from './config/firebase';
 import Cart from './pages/Cart';
+import CleanUp from './pages/CleanUp';
 
 export const Context = React.createContext()
 
@@ -57,6 +58,7 @@ function App() {
         <Route path="/Store" element={<Store/>}></Route>
         <Route path="/ProductPage" element={<ProductPage/>}></Route>
         <Route path="/Cart" element={<Cart/>}></Route>
+        <Route path="/CleanUp" element={<CleanUp/>}></Route>
       </Routes>
       </ProductInfo.Provider > 
     </Context.Provider>
