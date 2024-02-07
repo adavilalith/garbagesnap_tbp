@@ -4,13 +4,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Context} from '../App.js'
-import {Link} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
 import { signOut } from 'firebase/auth';
 import {auth} from '../config/firebase.js'
 import { Button } from 'react-bootstrap';
 
 export default function GarbageSnapNavbar() {
-
+    const navigate=useNavigate()
     const signoutfunc=async()=>{
       try{
         signOut(auth)
@@ -21,7 +21,7 @@ export default function GarbageSnapNavbar() {
       }
       setUser(false);
       setUserDB(false);
-      alert("sign out");
+      navigate('/')
     }
 
     const [user,setUser,userDB,setUserDB]=useContext(Context);

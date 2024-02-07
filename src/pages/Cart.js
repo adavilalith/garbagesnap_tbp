@@ -25,7 +25,7 @@ export default function Cart() {
             ...doc.data()
         }))
 
-        setCartProducts(cart.map((p)=>{
+        setCartProducts(cart.array.forEach((p)=>{
             for(const i in documentsData){
                 if(documentsData[i].productID==p.productID){
                     return {...documentsData[i],...p}

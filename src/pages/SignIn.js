@@ -1,7 +1,7 @@
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import GarbageSnapNavbar from "../components/Navbar";
 import React,{useContext,useState,useEffect} from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {app, auth} from '../config/firebase'
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 import { db } from "../config/firebase";
@@ -9,6 +9,7 @@ import {Context} from '../App.js'
 import {addDoc,collection,collectionGroup, getDoc,getDocs,query,where,} from "firebase/firestore";
 
 export default function SignIn() {
+  const navigate=useNavigate()
   const [user,setUser,userDB,setUserDB,cart,setCart]=useContext(Context);
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
@@ -22,8 +23,7 @@ export default function SignIn() {
            alert("error invalid");
           return;
       }
-       alert(" Signed In");
-       return;
+       navigate(-1)
 
    }
 

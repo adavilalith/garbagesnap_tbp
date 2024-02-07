@@ -6,6 +6,7 @@ import { db } from '../config/firebase';
 import { addDoc,collection,doc } from 'firebase/firestore';
 import { Context } from '../App';
 import { ProductInfo } from '../App'
+import LoginModel from './LoginModal';
 
 export default function ProductCard(props) {
 
@@ -15,13 +16,13 @@ export default function ProductCard(props) {
     const product=props.product;
     const ProductPageRef = useRef()
 
-
+    const modelRef=useRef()
     const [user,setUser,userDB,setUserDB,cart,setCart]=useContext(Context);
     const addToCart = async()=>{
       //  console.log(userDB,cart)
       //  console.log(`Users/${userDB.id}/cart/${cart.id}`)
         if(!user){
-          alert("Please Login");
+          modelRef.current.click()
           return;
         }
         if(userDB.id){
@@ -40,6 +41,7 @@ export default function ProductCard(props) {
     
   return (
     <Card style={{ width: '20rem' }} className="mx-3 my-3 ProductCard" >
+      <LoginModel buttonRef={modelRef} />
       <Card.Img variant="top" src={product.imgPath} onClick={()=>{setCurrProduct(product);ProductPageRef.current.click();}} />
       <Card.Body>
         <Card.Title onClick={()=>{setCurrProduct(product);ProductPageRef.current.click();}}>{product.title}</Card.Title>
@@ -55,6 +57,9 @@ export default function ProductCard(props) {
         </Button>
           </Col>
         </Row> */}
+        <Row>
+          <Col className='mb-3 mx-3'style={{fontSize:'22px'}}>INR {product.price}</Col>
+        </Row>
         <Row>
         <Col className='col-7'>
           <Button variant="dark mx-3" onClick={addToCart}>Add to Cart</Button>

@@ -1,15 +1,18 @@
-import React, { useContext,useState} from 'react'
+import React, { useContext,useState,useRef} from 'react'
 import GarbageSnapNavbar from '../components/Navbar'
 import { Container, Row, Col,Button } from 'react-bootstrap'
 import { ProductInfo } from '../App'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import { Context } from '../App'
 import { db } from '../config/firebase'
 import { collection,addDoc } from 'firebase/firestore'
-
+import LoginModal from '../components/LoginModal'
 export default function ProductPage() {
+    const imgStyle={width:'30vw'}
+    const modalRef=useRef()
+    const navigate=useNavigate()
     const [currProduct,setCurrProduct,ListOfProductData]=useContext(ProductInfo);
-    const [quantity,setQuantity]=useState(0);
+    const [quantity,setQuantity]=useState(1);
 
 
     const [user,setUser,userDB,setUserDB,cart,setCart]=useContext(Context);
@@ -17,7 +20,7 @@ export default function ProductPage() {
       //  console.log(userDB,cart)
       //  console.log(`Users/${userDB.id}/cart/${cart.id}`)
         if(!user){
-          alert("Please Login");
+          modalRef.current.click()
           return;
         }
         if(userDB.id){
@@ -30,7 +33,16 @@ export default function ProductPage() {
         alert("added to cart");
         return;
         }
-        alert("please login")
+        
+    }
+
+    const handleCartBtnClick=()=>{
+        if(user===false){
+            modalRef.current.click()
+        }
+        else{
+            navigate('/Cart');
+        }
     }
 
   if(!(currProduct)){return (<Link to="/Store">Store</Link>)}
@@ -38,8 +50,9 @@ export default function ProductPage() {
 
   return (
     <>
+        <LoginModal buttonRef={modalRef}/>
         <GarbageSnapNavbar></GarbageSnapNavbar>
-        <Container>
+        <Container className=''>
             <Row>
                 <Col>
                 <Container style={{margin:'10px' ,width: '80vw'}} >
@@ -51,9 +64,7 @@ export default function ProductPage() {
                 </Col>
                 <Col xs={6} lg={8}></Col>
                 <Col>
-                    <Link to="/Cart">
-                        <Button className='btn-dark ms-right'># Cart</Button>
-                    </Link>
+                        <Button className='btn-dark ms-right' onClick={handleCartBtnClick}># Cart</Button>
                 </Col>
             </Row>
             <Row className='d-sm-flex flex-column'>
@@ -61,7 +72,7 @@ export default function ProductPage() {
                 <Col className='display-3 '>{currProduct.title}</Col>
             </Row>
             <Row>
-                <Col className='my-0'><img src={currProduct.imgPath} alt=""/></Col>
+                <Col className='my-0'><img src={currProduct.imgPath} alt="" style={imgStyle}/></Col>
                 <Col>
                     <Container style={{margin:0}}>
                         <Row className='mt-5' style={{fontSize:'20px'}}>
@@ -71,8 +82,11 @@ export default function ProductPage() {
                             {currProduct.LongDescription}
                         </Row>
                         <Row>
-                            <Col>
-                                <button style={{backgroundColor:"#fff"}} onClick={()=>setQuantity((quantity>0)?quantity-1:quantity)}>-</button>
+                            <Col className='d-flex justify-content-start align-conter-start mx-4' style={{fontSize:"24px"}}><p>{`INR ${currProduct.price*quantity}`}</p></Col>
+                        </Row>
+                        <Row>
+                            <Col className='mx-4'>
+                                <button style={{backgroundColor:"#fff"}} onClick={()=>setQuantity((quantity>1)?quantity-1:quantity)}>-</button>
                                 <button style={{backgroundColor:"#fff"}}>{quantity}</button>
                                 <button style={{backgroundColor:"#fff"}} onClick={()=>{setQuantity(quantity+1)}}>+</button>
                             </Col>

@@ -1,7 +1,7 @@
 import React,{useState,useContext,useEffect, useRef} from 'react'
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import GarbageSnapNavbar from "../components/Navbar";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import {app, auth} from '../config/firebase'
 import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth'
 import {Context} from '../App.js'
@@ -9,7 +9,7 @@ import { getDocs, addDoc, collection } from 'firebase/firestore';
 import { db } from '../config/firebase';
 export default function SignUp() {
 
-
+    const navigate=useNavigate()
     const [user,setUser,userDB,setUserDB,cart,setCart]=useContext(Context);
     const createUser = async ()=>{
         if(email===""||password===""||confirmPassword===""){
@@ -28,7 +28,7 @@ export default function SignUp() {
                 console.log(err);
                 return;
             }
-            alert(" Signed In");
+            navigate(-1)
             return;
         }
 
