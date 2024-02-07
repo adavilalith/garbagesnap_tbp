@@ -24,7 +24,6 @@ export default function ProductPage() {
           return;
         }
         if(userDB.id){
-        console.log(`Users/${userDB.id}/cart`)
 
           await addDoc(collection(db,`Users/${userDB.id}/cart`),{
             productID : currProduct.id,

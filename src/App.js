@@ -41,7 +41,7 @@ function App() {
   const [currProduct,setCurrProduct]=useState(null)
   const [user,setUser] = useState(false)
   const [userDB,setUserDB]=useState(null);
-  const [cart,setCart]=useState({})
+  const [cart,setCart]=useState(null)
 
   
   return (
