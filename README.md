@@ -1,10 +1,16 @@
-# Project Name
 
-[Include a logo or banner here if you have one]
+# Garbage Snap
+
 
 ## Description
 
 This project is a web application built with React.js and Firebase, aimed at addressing the issue of waste management in Hyderabad. The application allows citizens to report garbage collection complaints, book clean-up services, and shop for eco-friendly products made from recycled materials. It provides a platform for community involvement and promotes sustainability efforts in the city.
+
+The website can we viewd at the link below.
+
+-**site**: https://garbagesnap-tbp.vercel.app/
+
+We strive to ensure our website is bug-free, but if you encounter any issues or unexpected behavior, please let us know! Your feedback is invaluable in helping us improve our project. 
 
 ## Features
 
@@ -20,13 +26,13 @@ This project is a web application built with React.js and Firebase, aimed at add
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/project-name.git
+git clone [https://github.com/your-username/project-name.git](https://github.com/adavilalith/garbagesnap_tbp.git)
 ```
 
 2. Install dependencies:
 
 ```bash
-cd project-name
+cd garbagesnap_tbp
 npm install
 ```
 
@@ -62,10 +68,13 @@ Contributions are welcome! Please follow the guidelines below:
 5. Push to the branch (`git push origin feature`)
 6. Create a new Pull Request
 
-## License
-
-[Include your license information here, e.g., MIT License]
 
 ## Contact
 
 [Include your contact information here, e.g., email, Twitter handle]
+
+##Note
+
+This project is a part of the college coursework for Theme Based Project Lab for Batch No 17 for the acedemic year 2024.
+
+
