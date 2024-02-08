@@ -2,7 +2,7 @@ import React,{useContext, useEffect, useState} from 'react'
 import GarbageSnapNavbar from '../components/Navbar'
 import { Context } from '../App';
 import { db } from '../config/firebase';
-import { getDocs,collection, query, where,getDoc,doc, deleteDoc } from 'firebase/firestore';
+import { getDocs,addDoc,collection, query, where,getDoc,doc, deleteDoc } from 'firebase/firestore';
 import { Button, Container,Row,Col,Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 export default function Cart() {
@@ -55,8 +55,9 @@ export default function Cart() {
             navigate("/Store")
             return;
         }
-        if(cart && Object.keys(cart).length!=0){
+        if(cart){
         updateCartProducts();
+        console.log("update cartproducts",cartProducts)
         console.log(cart,cartProducts)
         }
     },[cart])
@@ -76,12 +77,37 @@ export default function Cart() {
         console.log("remove",cart,cartProducts)
     }
 
+    const handlePlaceOrder= async()=>{
+        console.log("placing order")
+        const OrderRef = collection(db,'Orders')
+        const DocSnapshot = await addDoc(OrderRef,{
+            uid: user.uid,
+            NumberOfItems: cartProducts.length,
+            status :0 
+
+        })
+        const OrderItemsRef = collection(db,'Orders',DocSnapshot.id,'orderedProducts')
+        cartProducts.map((product,idx)=>{
+            addDoc(OrderItemsRef,{
+                productID: product.productID,
+                quantity: product.quantity, 
+            })
+        })
+        cartProducts.map((product)=>
+            removeProductFromCart(product)
+        )
+        setCartProducts([])
+        setCart(null)
+        console.log("placed order")
+        alert("order placed")
+        navigate("/Store")
+    }
     return (
         <>        
         <GarbageSnapNavbar/>
         <Container className='mt-5'>
                 <h1 className='display-2 my-3'><strong>Cart</strong></h1>
-                {!cartProducts.length&&(<h3>No Items in Cart</h3>)}
+                {!cartProducts.length &&<h3>No Items in Cart</h3>}
 
                 {/* <FontAwesomeIcon icon="fa-regular fa-cart-shopping" /> */}
                 {cartProducts && cartProducts.map((product, idx) => (
@@ -110,6 +136,13 @@ export default function Cart() {
                         </Card>
                     </Row>
                 ))}
+                {cartProducts.length  &&
+                    <Row>
+                        <Col className='d-flex justify-content-center my-5'>
+                            <Button className='btn-dark px-4'><p className='h3' onClick={handlePlaceOrder}>Place Order</p></Button>
+                        </Col>
+                    </Row>
+                }
             </Container>
             </>
 

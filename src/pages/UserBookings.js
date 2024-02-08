@@ -14,7 +14,8 @@ export default function UserBookings() {
         if(user){
             const q=query(collection(db,'Bookings'),where("uid","==",user.uid),orderBy('status'),)
             const querySnapshot = await getDocs(q);
-            setBookings(querySnapshot.docs.map((doc)=>({...doc.data(),id: doc.id})))
+            console.log("qsnap",querySnapshot)
+                setBookings(querySnapshot.docs.map((doc)=>({...doc.data(),id: doc.id})))
             console.log("booking set")
             }
             else{
@@ -34,7 +35,7 @@ export default function UserBookings() {
       <GarbageSnapNavbar/>
         <Container>
             <Row>
-                <Col className="d-flex justify-content-left my-3 display-3 "><p><strong>User Bookings</strong></p></Col>
+                <Col className="d-flex justify-content-left my-3 display-3 "><p><strong>Bookings</strong></p></Col>
             </Row>
             {bookings&&bookings.map((bookings,idx)=>(
                 <Card className='my-5' >

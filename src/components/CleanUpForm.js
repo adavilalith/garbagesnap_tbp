@@ -42,7 +42,8 @@ export default function CleanUpForm(props) {
           quantity: quantity,
           CleanUpTier: CleanUpTier,
           time: time,
-          date: date 
+          date: date,
+          status: 0 
       })
       alert("Booking Placed")
     }

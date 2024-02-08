@@ -18,6 +18,7 @@ import { collection, doc ,getDocs, setDoc} from 'firebase/firestore';
 import { db } from './config/firebase';
 import Cart from './pages/Cart';
 import CleanUp from './pages/CleanUp';
+import UserOrders from './pages/UserOrders';
 
 export const Context = React.createContext()
 
@@ -64,6 +65,7 @@ function App() {
         <Route path="/CleanUp" element={<CleanUp/>}></Route>
         <Route path="/Snaps" element={<UserSnaps/>}></Route>
         <Route path="/Bookings" element={<UserBookings/>}></Route>
+        <Route path="/Orders" element={<UserOrders/>}></Route>
       </Routes>
       </ProductInfo.Provider > 
     </Context.Provider>

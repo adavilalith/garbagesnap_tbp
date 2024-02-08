@@ -28,7 +28,7 @@ export default function SignUp() {
                 console.log(err);
                 return;
             }
-            navigate(-1)
+            navigate('/')
             return;
         }
 
@@ -42,18 +42,24 @@ export default function SignUp() {
               email:email,
               password:password,
               uid: user.uid,
-            }).then((userData)=>{
-              userData.forEach((doc)=>{setUserDB({...doc.data(), id : doc.id})})
+            }).then(async(userData)=>{
+              console.log(userData)
+                    const data = await addDoc(collection(db,'Users'),{
+                      uid:user.uid,
+                      email:user.email
+                    })
+                    setUserDB(data)
             })
 
         }
       }
       handleSignUpDB();
-    },[user,setUser])
+    },[user,setUser]) 
 
     useEffect(()=>{
+      console.log(userDB)
       if(userDB){
-      getDocs(collection(db,`Users/${userDB.id}/cart`)).then((temp)=>setCart(temp.map((doc)=>({...doc.data(), id : doc.id}))))
+      getDocs(collection(db,`Users/${userDB.id}/cart`)).then((temp)=>setCart(temp.docs.map((doc)=>({...doc.data(), id : doc.id}))))
       }
     },[userDB])
 
