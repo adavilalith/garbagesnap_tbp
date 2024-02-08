@@ -77,7 +77,7 @@ Let's make Hyderabad shine brighter than ever before!
                         <Col/>
                       </Row>
                     <Card.Body>
-                        <Card.Title><p className='h3'>14,000+ Snaps<br></br> resolved</p></Card.Title>
+                        <Card.Title><p className='h3'>14,000+ Snaps<br></br> Resolved</p></Card.Title>
                         <Card.Text>
                             Over 3000 Snaps submitted by citizen of Hyderabad have beem cleaned up in a timely and efficient manner. 
                         </Card.Text>
