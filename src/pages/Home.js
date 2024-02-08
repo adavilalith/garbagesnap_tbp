@@ -62,7 +62,7 @@ Let's make Hyderabad shine brighter than ever before!
                         <Col/>
                       </Row>
                     <Card.Body>
-                        <Card.Title ><p className='h3'>57000 Kgs+<br></br> Recycled</p></Card.Title>
+                        <Card.Title ><p className='h3'>57,000 Kgs+<br></br> Recycled</p></Card.Title>
                         <Card.Text className='mt-4'>
                             over 5000kgs of garbage has been recycled in to useful products that can be bought at our store.
                         </Card.Text>
@@ -77,7 +77,7 @@ Let's make Hyderabad shine brighter than ever before!
                         <Col/>
                       </Row>
                     <Card.Body>
-                        <Card.Title><p className='h3'>14000+ Snaps<br></br> resolved</p></Card.Title>
+                        <Card.Title><p className='h3'>14,000+ Snaps<br></br> resolved</p></Card.Title>
                         <Card.Text>
                             Over 3000 Snaps submitted by citizen of Hyderabad have beem cleaned up in a timely and efficient manner. 
                         </Card.Text>
