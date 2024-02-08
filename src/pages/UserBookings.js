@@ -41,7 +41,7 @@ export default function UserBookings() {
                 <Card className='my-5' >
                     <Card.Header className='' >
                     <Row className='mb-4 bg-light px-3 pt-3' style={cardStyle}>
-                    <Col className='col-1'><strong>S.no</strong></Col>
+                    <Col className='col-2'><strong>S.no</strong></Col>
                     <Col className='col-2'><strong>booking ID</strong></Col>
                     <Col className='col-2'><strong>Type</strong></Col>
                     <Col className='col-2'><strong>Date</strong></Col>
@@ -51,7 +51,7 @@ export default function UserBookings() {
                     </Card.Header>
                     <Card.Body style={cardStyle}>
                     <Row className='mx-2 d-flex align-items-center m-2'>
-                    <Col className='col-1'>{idx+1}</Col>
+                    <Col className='col-2'>{idx+1}</Col>
                     <Col className='col-2'>{bookings.id}</Col>
                     <Col className='col-2'>{bookings.CleanUpTier}</Col>
                     <Col className='col-2'>{bookings.date}</Col>
