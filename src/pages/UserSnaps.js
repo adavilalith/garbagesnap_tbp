@@ -4,10 +4,10 @@ import { db } from '../config/firebase'
 import { collection, getDocs, query, where, orderBy} from 'firebase/firestore'
 import { Context } from '../App'
 import { Container, Row, Col, Button, Card } from 'react-bootstrap'
-
+import { useNavigate } from 'react-router-dom'
 export default function UserSnaps() {
     const [cardStyle,setCardStyle]=useState({fontSize:'16px'})
-    
+    const navigate=useNavigate()
     const [user]=useContext(Context)
     const [Snaps,setSnaps]=useState(null)
    
@@ -21,7 +21,10 @@ export default function UserSnaps() {
             console.log("no user")
         }
     }
-    useEffect(()=>{
+    useEffect(()=>{ 
+        if(!user){
+            navigate('/SignIn')
+        }
         if(window.screen.width<600){
             console.log("small")
             setCardStyle({fontSize:'6px'})
