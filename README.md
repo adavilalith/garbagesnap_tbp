@@ -1,70 +1,99 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Garbage Snap
 
-## Available Scripts
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+This project is a web application built with React.js and Firebase, aimed at addressing the issue of waste management in Hyderabad. The application allows citizens to report garbage collection complaints, book clean-up services, and shop for eco-friendly products made from recycled materials. It provides a platform for community involvement and promotes sustainability efforts in the city.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The website can we viewd at the link below.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **site**: https://garbagesnap-tbp.vercel.app/
 
-### `npm test`
+We strive to ensure our website is bug-free, but if you encounter any issues or unexpected behavior, please let us know! Your feedback is invaluable in helping us improve our project. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+- Report garbage collection complaints
+- Book clean-up services
+- Online store featuring products made from recycled materials
+- User authentication and authorization
+- Responsive design with Bootstrap UI library
+- Integration with Firebase backend for real-time data storage and management
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Website OverView
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Home Page**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="https://drive.google.com/uc?export=view&id=14uG6sMHVdZjRwcdq0SUrwcPtUymO3ejn" style="width: 650px; max-width: 100%; height: auto" />
 
-### `npm run eject`
+- **Send** **Snap**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<img src="https://drive.google.com/uc?export=view&id=1rheRsxXca8L1YPACSs8gmThQ0r7v9Y2w" style="width: 650px; max-width: 100%; height: auto" />
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Clean** **up**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<img src="https://drive.google.com/uc?export=view&id=1zH4oQdWrEgwxbShwvqI3Pz_GAwDFmdRs" style="width: 650px; max-width: 100%; height: auto" />
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Store**
 
-## Learn More
+<img src="https://drive.google.com/uc?export=view&id=1A882bZQt3Itq5Gtut_KEDML_dngapt5J" style="width: 650px; max-width: 100%; height: auto" />
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Installation
 
-### Code Splitting
+1. Clone the repository:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+git clone [https://github.com/your-username/project-name.git](https://github.com/adavilalith/garbagesnap_tbp.git)
+```
 
-### Analyzing the Bundle Size
+2. Install dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+cd garbagesnap_tbp
+npm install
+```
 
-### Making a Progressive Web App
+3. Set up Firebase:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   - Create a Firebase project at [https://console.firebase.google.com/](https://console.firebase.google.com/)
+   - Obtain your Firebase configuration details
+   - Replace the Firebase configuration in `src/firebase/firebase.js` with your own configuration
 
-### Advanced Configuration
+4. Run the application:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+npm start
+```
 
-### Deployment
+5. Open your browser and visit [http://localhost:3000](http://localhost:3000)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Usage
 
-### `npm run build` fails to minify
+- Sign up or log in to access the full features of the application
+- Report garbage collection complaints by providing location details
+- Book clean-up services for specific locations
+- Explore and shop for eco-friendly products in the online store
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributing
+
+Contributions are welcome! Please follow the guidelines below:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature`)
+3. Make your changes
+4. Commit your changes (`git commit -am 'Add feature'`)
+5. Push to the branch (`git push origin feature`)
+6. Create a new Pull Request
+
+
+## Contact
+
+[Include your contact information here, e.g., email, Twitter handle]
+
+##Note
+
+This project is a part of the college coursework for Theme Based Project Lab for Batch No 17 for the acedemic year 2024.
+
+
