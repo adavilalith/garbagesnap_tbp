@@ -8,11 +8,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../config/firebase.js';
 import { Button } from 'react-bootstrap';
-
 export default function GarbageSnapNavbar() {
   const navigate = useNavigate();
 
+  const handleContactUs= async ()=>{
+    await navigate('/');
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
+  }
+
   const signoutfunc = async () => {
+    console.log("why?")
     try {
       await signOut(auth);
       setUser(false);
@@ -29,15 +37,17 @@ export default function GarbageSnapNavbar() {
   const AccountOrSignIn = () => {
     if (user) {
       return (
+        <>
         <NavDropdown title="Account" id="collapsible-nav-dropdown">
-          <NavDropdown.Item href="/Profile">Profile</NavDropdown.Item>
-          <NavDropdown.Item href="/Orders">Orders</NavDropdown.Item>
-          <NavDropdown.Item href="/History">History</NavDropdown.Item>
+          <NavDropdown.Item><Link to="/Snaps" style={{textDecoration:'none',color:'black'}}>Snaps</Link></NavDropdown.Item>
+          <NavDropdown.Item ><Link to="/Bookings" style={{textDecoration:'none',color:'black'}}>Bookings</Link></NavDropdown.Item>
+          <NavDropdown.Item ><Link to="/Orders" style={{textDecoration:'none',color:'black'}}>Orders</Link></NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item onClick={signoutfunc}>
-            <Button variant="outline-danger">Sign Out</Button>
+          <NavDropdown.Item >
+            <Button variant="outline-danger" onClick={signoutfunc}>Sign Out</Button>
           </NavDropdown.Item>
         </NavDropdown>
+        </>
       );
     } else {
       return (
@@ -65,7 +75,7 @@ export default function GarbageSnapNavbar() {
             <Link to="/SendSnap" className="nav-link">Send Snap</Link>
             <Link to="/CleanUp" className="nav-link" >Clean Up</Link>
             <Link to="/Store" className="nav-link">Store</Link>
-            <Link to="/" className="nav-link" disabled>Contact Us</Link>
+            <p className="nav-link my-0 " role="button" onClick={handleContactUs} >Contact Us</p>
           </Nav>
           <Nav>{AccountOrSignIn()}</Nav>
         </Navbar.Collapse>

@@ -8,6 +8,7 @@ import { db } from '../config/firebase'
 import { collection,addDoc } from 'firebase/firestore'
 import LoginModal from '../components/LoginModal'
 import cartIcon from '../res/cartIcon.png'
+import Footer from '../components/Footer'
 
 
 export default function ProductPage() {
@@ -57,7 +58,7 @@ export default function ProductPage() {
     <>
         <LoginModal buttonRef={modalRef}/>
         <GarbageSnapNavbar></GarbageSnapNavbar>
-        <Container className=''>
+        <Container className='h-100'>
             <Row>
                 <Col>
                 <Container style={{margin:'10px' ,width: '80vw'}} >
@@ -109,6 +110,7 @@ export default function ProductPage() {
                 </Col>
             </Row>
         </Container>
+        <Footer style={{maxWidth:''}}/>
     </>
   )
 }

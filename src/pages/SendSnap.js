@@ -18,9 +18,10 @@ export default function SendSnap() {
     const [user,setUser]=useContext(Context)
     const date = new Date();
     const getGeolocation = ()=>{
-        setUser(user);
+        setLocation(location)
         if(navigator.geolocation){
             navigator.geolocation.watchPosition((position)=>{
+                console.log("hi")
                 setLocation(`${position.coords.latitude},${position.coords.longitude}`);
             })
         }
@@ -77,6 +78,7 @@ export default function SendSnap() {
             imgURL: imgURL,
             location: location,
             description: desc,
+            status: 0,
             userID : (user===false)?"":user.uid
             });
         alert("uploaded")
@@ -114,7 +116,7 @@ export default function SendSnap() {
                     </Row>
                     <Row>
                         <Col className='d-flex justify-content-center align-items-center text-center'>
-                            <p>{(location)?location:"Enable Location Acess"}</p>
+                            <p>{(location.length)?location:"Enable Location Access"}</p>
                         </Col>              
                     </Row>
                     <Row className='mt-5'>

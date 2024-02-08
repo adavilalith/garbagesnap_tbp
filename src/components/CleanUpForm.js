@@ -3,6 +3,9 @@ import { Context } from '../App';
 import LoginModal from './LoginModal';
 import { Modal,Button, } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { db } from '../config/firebase';
+import { addDoc,collection } from 'firebase/firestore';
+
 export default function CleanUpForm(props) {
 
    const [user]=useContext(Context)
@@ -26,10 +29,22 @@ export default function CleanUpForm(props) {
 
   }
 
-  const submitBooking = ()=>{
+  const submitBooking = async ()=>{
     if(user){
   console.log(FirstName,LastName,PhoneNumber,email,quantity,CleanUpTier,time,date)
-
+      const BookingsRef = collection(db,'Bookings');
+      addDoc(BookingsRef,{
+          uid:user.uid,
+          firstName: FirstName,
+          lastName: LastName,
+          PhoneNumber: PhoneNumber,
+          bookingEmail: email,
+          quantity: quantity,
+          CleanUpTier: CleanUpTier,
+          time: time,
+          date: date 
+      })
+      alert("Booking Placed")
     }
     else{
         handleShow();
@@ -111,7 +126,7 @@ export default function CleanUpForm(props) {
         <div className="row mt-4">
           <div className="col">
             <div className="form-floating mb-3">
-              <input type="number"  onChange={(e)=>setQuantity(e.target.value)} className="form-control" id="quantityInput" placeholder="Quantity" required
+              <input type="number" value={quantity} onChange={(e)=>setQuantity((e.target.value>-1)?e.target.value:0)} className="form-control" id="quantityInput" placeholder="Quantity" required
               />
               <label htmlFor="quantityInput">Quantity in kg</label>
             </div>

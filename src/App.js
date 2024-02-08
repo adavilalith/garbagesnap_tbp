@@ -10,6 +10,9 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Store from './pages/Store'
 import ProductPage from './pages/ProductPage'
+import UserSnaps from './pages/UserSnaps';
+import UserBookings from './pages/UserBookings';
+
 import placeholderimg from './res/ProductPlaceholder.jpg'
 import { collection, doc ,getDocs, setDoc} from 'firebase/firestore';
 import { db } from './config/firebase';
@@ -59,6 +62,8 @@ function App() {
         <Route path="/ProductPage" element={<ProductPage/>}></Route>
         <Route path="/Cart" element={<Cart/>}></Route>
         <Route path="/CleanUp" element={<CleanUp/>}></Route>
+        <Route path="/Snaps" element={<UserSnaps/>}></Route>
+        <Route path="/Bookings" element={<UserBookings/>}></Route>
       </Routes>
       </ProductInfo.Provider > 
     </Context.Provider>
