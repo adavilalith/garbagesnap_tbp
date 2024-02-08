@@ -24,7 +24,7 @@ export default function DragDropFile(props) {
                     <Row>
                     </Row>
                 </Container>
-                <Col className=' m-2 d-flex flex-col justify-content-center align-items-center text-center' onClick={()=>setImgUpload(false)}><Button>Cancel</Button></Col>
+                <Col className=' m-2 d-flex flex-col justify-content-center align-items-center text-center ' onClick={()=>setImgUpload(false)}><Button className='btn-dark'>Cancel</Button></Col>
                 </>
                 
             )
