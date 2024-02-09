@@ -5,7 +5,7 @@ import { Link,useNavigate } from "react-router-dom";
 import {app, auth} from '../config/firebase'
 import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth'
 import {Context} from '../App.js'
-import { getDocs, addDoc, collection } from 'firebase/firestore';
+import { getDocs, addDoc, collection, collectionGroup } from 'firebase/firestore';
 import { db } from '../config/firebase';
 export default function SignUp() {
 
@@ -13,6 +13,7 @@ export default function SignUp() {
     const [user,setUser,userDB,setUserDB,cart,setCart]=useContext(Context);
     const createUser = async ()=>{
         if(email===""||password===""||confirmPassword===""){
+            alert("please fill the fields")
             return;
         }
         if(password!==confirmPassword){
@@ -23,38 +24,39 @@ export default function SignUp() {
             try{
             const temp =await createUserWithEmailAndPassword(auth,email,password)
             setUser(temp.user);
+            console.log("user value after creation",temp.user)
             }
             catch(err){
                 console.log(err);
                 return;
             }
+            await handleSignUpDB()
             navigate('/')
-            return;
         }
 
     }
 
-    useEffect(()=>{
-      const handleSignUpDB=async()=>{
-        if(user){
-            const userRef=collection(db,'Users')
-            addDoc(userRef,{
-              email:email,
-              password:password,
-              uid: user.uid,
-            }).then(async(userData)=>{
-              console.log(userData)
-                    const data = await addDoc(collection(db,'Users'),{
-                      uid:user.uid,
-                      email:user.email
-                    })
-                    setUserDB(data)
-            })
+  
+// useEffect(()=>{
+//   console.log("calling fetch db func in use effect")
+//   handleSignUpDB()
+// },[user])
 
-        }
-      }
-      handleSignUpDB();
-    },[user,setUser]) 
+const handleSignUpDB=async()=>{
+  // console.log("user db fetching start",auth.currentUser.uid)s
+  if(auth.currentUser){
+        const data = await addDoc(collection(db,'Users'),{
+          uid: auth.currentUser.uid
+        })
+        setUserDB(data)
+        console.log("user db fetching success")
+  }
+  else{
+  console.log("user db fetching fail no user")
+  }
+}
+
+      
 
     useEffect(()=>{
       console.log(userDB)

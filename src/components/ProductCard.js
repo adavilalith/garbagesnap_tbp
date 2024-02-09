@@ -19,7 +19,7 @@ export default function ProductCard(props) {
     const modelRef=useRef()
     const [user,setUser,userDB,setUserDB,cart,setCart]=useContext(Context);
     const addToCart = async()=>{
-      //  console.log(userDB,cart)
+        console.log(userDB,cart)
       //  console.log(`Users/${userDB.id}/cart/${cart.id}`)
         if(!user){
           modelRef.current.click()
@@ -35,7 +35,6 @@ export default function ProductCard(props) {
         alert("added to cart");
         return;
         }
-        alert("please login")
     }
 
     
