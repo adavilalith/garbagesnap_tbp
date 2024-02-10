@@ -124,7 +124,7 @@ export default function Cart() {
                                             Spiral-bound notebook made from recycled paper.                                               
                                             </p>
                                             </Col>
-                                        <Card.Text><b>Quantity :</b> {product.price}</Card.Text>
+                                        <Card.Text><b>Quantity :</b> {product.quantity}</Card.Text>
                                         <Card.Text><b>Price :</b> {product.price*product.quantity}</Card.Text>
                                     </Col>
                                     <Col>
