@@ -5,6 +5,8 @@ import { db } from '../config/firebase';
 import { getDocs,addDoc,collection, query, where,getDoc,doc, deleteDoc } from 'firebase/firestore';
 import { Button, Container,Row,Col,Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import dummyimg from '../res/ProductPlaceholder.jpg'
+
 export default function Cart() {
     const navigate=useNavigate()
     const [user,setUser,userDB,setUserDB,cart,setCart]=useContext(Context);
@@ -109,7 +111,6 @@ export default function Cart() {
                 <h1 className='display-2 my-3'><strong>Cart</strong></h1>
                 {!cartProducts.length &&<h3>No Items in Cart</h3>}
 
-                {/* <FontAwesomeIcon icon="fa-regular fa-cart-shopping" /> */}
                 {cartProducts && cartProducts.map((product, idx) => (
                     <Row key={idx} className="mb-4 ">
                         <Card className="w-100 my-2 h-100 rounded-0 border p-3 mb-2 bg-light bg-gradient rounded-5">
@@ -117,18 +118,26 @@ export default function Cart() {
                                 <Card.Title style={{ textAlign: 'start' }}><h4>{product.title}</h4></Card.Title>
                                 <hr />
                                 <Row>
-                                    <Col >
-                                        <Card.Text><b>Quantity :</b> {product.quantity}</Card.Text>
-                                        <Card.Text><b>Price :</b> {product.price * product.quantity}</Card.Text>
+                                    <Col>
+                                    <Col>
+                                        <p>
+                                            Spiral-bound notebook made from recycled paper.                                               
+                                            </p>
+                                            </Col>
+                                        <Card.Text><b>Quantity :</b> {product.price}</Card.Text>
+                                        <Card.Text><b>Price :</b> {product.price*product.quantity}</Card.Text>
                                     </Col>
-                                    
-                                    <Col style={{ borderLeft: '1px solid black', textAlign: 'center' }} >
-                                        {product.ShortDescription}
+                                    <Col>
+                                        <Row>
+                                            
+                                        </Row>
+                                        <Row>
+                                        <Col className='d-flex justify-content-center'><img src={product.imgPath} style={{width:"200px",height:"200px"}}></img></Col>
+                                        </Row>
                                     </Col>
+
                                 </Row>
-
                                 <hr />  
-
                                 <Col xs="auto" className="mx-auto">
                                     <Button variant="danger" className='mt-auto' onClick={() => removeProductFromCart(product)}>Remove</Button>
                                 </Col>

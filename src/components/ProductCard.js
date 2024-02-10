@@ -57,7 +57,7 @@ export default function ProductCard(props) {
           </Col>
         </Row> */}
         <Row>
-          <Col className='mb-3 mx-3'style={{fontSize:'22px'}}>INR {product.price}</Col>
+          <Col className='mb-3 mx-3'style={{fontSize:'22px'}}>INR {product.price}</Col>        
         </Row>
         <Row>
         <Col className='col-7'>
