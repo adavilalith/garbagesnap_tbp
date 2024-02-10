@@ -6,6 +6,7 @@ import { getDocs,addDoc,collection, query, where,getDoc,doc, deleteDoc } from 'f
 import { Button, Container,Row,Col,Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import dummyimg from '../res/ProductPlaceholder.jpg'
+import './Cart.css'
 
 export default function Cart() {
     const navigate=useNavigate()
@@ -109,9 +110,9 @@ export default function Cart() {
         <GarbageSnapNavbar/>
         <Container className='mt-5'>
                 <h1 className='display-2 my-3'><strong>Cart</strong></h1>
-                {!cartProducts.length &&<h3>No Items in Cart</h3>}
+                {(!cartProducts.length)?<h3>No Items in Cart</h3>:" "}
 
-                {cartProducts && cartProducts.map((product, idx) => (
+                {(cartProducts)? cartProducts.map((product, idx) => (
                     <Row key={idx} className="mb-4 ">
                         <Card className="w-100 my-2 h-100 rounded-0 border p-3 mb-2 bg-light bg-gradient rounded-5">
                             <Card.Body className="d-flex flex-column">
@@ -132,7 +133,7 @@ export default function Cart() {
                                             
                                         </Row>
                                         <Row>
-                                        <Col className='d-flex justify-content-center'><img src={product.imgPath} style={{width:"200px",height:"200px"}}></img></Col>
+                                        <Col className='d-flex justify-content-center'><img id="cartImg" src={product.imgPath} style={{width:"200px",height:"200px"}}></img></Col>
                                         </Row>
                                     </Col>
 
@@ -144,14 +145,14 @@ export default function Cart() {
                             </Card.Body>
                         </Card>
                     </Row>
-                ))}
-                {cartProducts.length  &&
+                )):" "}
+                {(cartProducts.length)?
                     <Row>
                         <Col className='d-flex justify-content-center my-5'>
                             <Button className='btn-dark px-4'><p className='h3' onClick={handlePlaceOrder}>Place Order</p></Button>
                         </Col>
                     </Row>
-                }
+                :""}
             </Container>
             </>
             
