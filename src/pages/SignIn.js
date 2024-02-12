@@ -24,7 +24,7 @@ export default function SignIn() {
            alert("error invalid");
           return;
       }
-       navigate(-1)
+       navigate('/home')
 
    }
 
