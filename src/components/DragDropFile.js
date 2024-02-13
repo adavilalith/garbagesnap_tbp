@@ -35,7 +35,7 @@ export default function DragDropFile(props) {
                 <div className='bg-light m-2 d-flex flex-col justify-content-center align-items-center text-center' style={{width:'',height:'300px', border: '2px dashed #111',borderRadius:'10px'}}>
                 <Container  onDragOver={handleDrag} onDrop={handleDrop}>
                 <Row>
-                    <Col className='col-12'><h1 className='text-center h3'>Drap and Drop<br></br> image here</h1></Col>
+                    <Col className='col-12'><h1 className='text-center h3'>Drag and Drop<br></br> image here</h1></Col>
                 </Row>
                         <input 
                         type="file"
