@@ -18,6 +18,7 @@ export default function SignIn() {
       const temp = await signInWithEmailAndPassword(auth,email,password);
       console.log("sign in auth workedd")
       setUser(temp.user);
+      handleSignInDB();
 
     }
        catch(err){
@@ -28,27 +29,24 @@ export default function SignIn() {
 
    }
 
-   useEffect(()=>{
-    const handleSignInDB=async()=>{
-      console.log("userdb signin start")
-      if(user!=false){
-          const q = query(collection(db,'Users'),where("uid","==",user.uid))
-          const userData = await getDocs(q);
-          // console.log(userData)
-        userData.forEach((doc)=>console.log(doc))
-          userData.forEach((doc)=>{setUserDB({...doc.data(), id : doc.id})})
-          console.log("userdb signin success")
+   const handleSignInDB=async()=>{
+    console.log("userdb signin start")
+    if(auth.currentUser){
+        const q = query(collection(db,'Users'),where("uid","==",auth.currentUser.uid))
+        const userData = await getDocs(q);
+        // console.log(userData)
+      userData.forEach((doc)=>console.log(doc))
+        userData.forEach((doc)=>{setUserDB({...doc.data(), id : doc.id})})
+        console.log("userdb signin success")
 
-        }
-        else{
-          console.log("userdb load failed no user")
-        }
+      }
+      else{
+        console.log("userdb load failed no user")
+      }
 
 
-    }
-    // console.log(userDB,cart)
-    handleSignInDB();
-  },[user])
+  }
+
   
   
 
