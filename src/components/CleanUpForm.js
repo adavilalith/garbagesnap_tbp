@@ -1,14 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState,useRef } from 'react';
 import { Context } from '../App';
 import LoginModal from './LoginModal';
 import { Modal,Button, } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { db } from '../config/firebase';
 import { addDoc,collection } from 'firebase/firestore';
+import DummyModal from './DummyModal';
 
 export default function CleanUpForm(props) {
 
    const [user]=useContext(Context)
+   const btnRef=useRef()
 
    const [show, setShow] = useState(false);
 
@@ -33,7 +35,7 @@ export default function CleanUpForm(props) {
     if(user){
   console.log(FirstName,LastName,PhoneNumber,email,quantity,CleanUpTier,time,date)
       const BookingsRef = collection(db,'Bookings');
-      addDoc(BookingsRef,{
+      await addDoc(BookingsRef,{
           uid:user.uid,
           firstName: FirstName,
           lastName: LastName,
@@ -45,7 +47,7 @@ export default function CleanUpForm(props) {
           date: date,
           status: 0 
       })
-      alert("Booking Placed")
+      btnRef.current.click()
     }
     else{
         handleShow();
@@ -57,7 +59,7 @@ export default function CleanUpForm(props) {
     <>
         <button onClick={handleShow} hidden>
       </button >
-
+      <DummyModal title="Clean Up Booked" desc="Our team will contact you shortly for further details. We usually respond between 10 to 20 minutes" btnRef={btnRef}></DummyModal>
       <Modal
         show={show}
         onHide={handleClose}

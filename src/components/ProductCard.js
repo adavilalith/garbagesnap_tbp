@@ -7,6 +7,7 @@ import { addDoc,collection,doc } from 'firebase/firestore';
 import { Context } from '../App';
 import { ProductInfo } from '../App'
 import LoginModel from './LoginModal';
+import DummyModal from './DummyModal';
 
 export default function ProductCard(props) {
 
@@ -15,7 +16,7 @@ export default function ProductCard(props) {
     const [quantity,setQuantity]=useState(1);
     const product=props.product;
     const ProductPageRef = useRef()
-
+    const btnRef=useRef()
     const modelRef=useRef()
     const [user,setUser,userDB,setUserDB,cart,setCart]=useContext(Context);
     const addToCart = async()=>{
@@ -32,7 +33,7 @@ export default function ProductCard(props) {
             productID : product.id,
             quantity: quantity 
         });
-        alert("added to cart");
+        btnRef.current.click()
         return;
         }
     }
@@ -40,6 +41,7 @@ export default function ProductCard(props) {
     
   return (
     <Card style={{ width: '20rem' }} className="mx-3 my-3 ProductCard" >
+      <DummyModal title="Product added to your Cart" desc={`prodcuct has been added to your cart. You can view your cart by clicking on the cart button`} btnRef={btnRef}/>
       <LoginModel buttonRef={modelRef} />
       <Card.Img variant="top" src={product.imgPath} onClick={()=>{setCurrProduct(product);ProductPageRef.current.click();}} />
       <Card.Body>

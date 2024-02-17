@@ -1,4 +1,4 @@
-import React,{ useState, useEffect, useContext } from 'react'
+import React,{ useState, useEffect, useContext,useRef } from 'react'
 import GarbageSnapNavbar from '../components/Navbar'
 import { Button, Col, Container, Row, Form } from 'react-bootstrap'
 import DragDropFile from '../components/DragDropFile'
@@ -12,6 +12,7 @@ import {
 } from 'firebase/storage'
 import {app,db} from '../config/firebase'
 import { Context } from '../App'
+import DummyModal from '../components/DummyModal'
 
 
 export default function SendSnap() {
@@ -26,7 +27,7 @@ export default function SendSnap() {
             })
         }
         else{
-            console.log("enable geolocation")
+            alert("enable geolocation")
         }
     }
 
@@ -81,7 +82,7 @@ export default function SendSnap() {
             status: 0,
             userID : (user===false)?"":user.uid
             });
-        alert("uploaded")
+        btnRef.current.click();
         return;
     },[imgURL])
     const uploadComplaint= async()=>{
@@ -95,11 +96,12 @@ export default function SendSnap() {
 
 
     }
-
+    const btnRef=useRef()
     return (
         <>
         <GarbageSnapNavbar/>
         <Container >
+            <DummyModal title="Image Uploaded" desc="We will reach out to you as soon as we clean up the garbage" btnRef={btnRef}/>
             <Row className='d-flex justify-content-center align-items-center text-center mt-3'><h1 className='display-3 mt-2'><strong>Send Snap</strong></h1></Row>
             <Row>
                 <Col className='col-xxl-1 '></Col>
@@ -131,7 +133,7 @@ export default function SendSnap() {
                     </Row>
                     <Row className='my-5'>
                         <Col className='d-flex justify-content-center align-items-center text-center'>
-                            <Button className='btn-dark' onClick={uploadComplaint}><h3>Send Snap</h3></Button>
+                            <Button className='btn-dark' onClick={uploadComplaint} ><h3>Send Snap</h3></Button>
                         </Col>
                     </Row>
                 </Col>

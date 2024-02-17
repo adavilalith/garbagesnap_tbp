@@ -9,7 +9,7 @@ import { collection,addDoc } from 'firebase/firestore'
 import LoginModal from '../components/LoginModal'
 import cartIcon from '../res/cartIcon.png'
 import Footer from '../components/Footer'
-
+import DummyModal from '../components/DummyModal'
 
 export default function ProductPage() {
     let imgStyle={maxWidth:'30vw'}
@@ -36,7 +36,7 @@ export default function ProductPage() {
             productID : currProduct.id,
             quantity: quantity 
         });
-        alert("added to cart");
+        btnRef.current.click()
         return;
         }
         
@@ -50,7 +50,7 @@ export default function ProductPage() {
             navigate('/Cart');
         }
     }
-
+    const btnRef=useRef()
   if(!(currProduct)){return (<Link to="/Store">Store</Link>)}
  
 
@@ -59,6 +59,8 @@ export default function ProductPage() {
         <LoginModal buttonRef={modalRef}/>
         <GarbageSnapNavbar></GarbageSnapNavbar>
         <Container className='h-100'>
+      <DummyModal title="Product added to your Cart" desc={`prodcuct has been added to your cart. You can view your cart by clicking on the cart button`} btnRef={btnRef}/>
+
             <Row>
                 <Col>
                 <Container style={{margin:'10px' ,width: '80vw'}} >
