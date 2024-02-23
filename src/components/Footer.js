@@ -12,7 +12,7 @@ export default function App() {
           </Row>
           <Row className='mt-2'>
             <Col>
-              <p>Join us in the movement to clean up Hyderabad and promote sustainability. Report garbage, book clean-ups, and shop eco-friendly products made from recycled materials. Let's make Hyderabad a cleaner, greener place for all!</p>
+              <p style={{fontSize: '.8rem'}}>Join us in the movement to clean up Hyderabad and promote sustainability.</p>
             </Col>
             <Col/>
           </Row>

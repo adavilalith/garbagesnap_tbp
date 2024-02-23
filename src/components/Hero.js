@@ -12,7 +12,7 @@ export default function HeroImage() {
           <div className='d-flex justify-content-center align-items-center h-100'>
             <div className='text-white'>
               <h5 className='mb-2'>Welcome to</h5>
-              <h1 className='mb-3 display-4'><strong>Garbage Snap</strong></h1>
+              <h1 className='mb-3 display-1'><strong>Garbage Snap</strong></h1>
               <h5 className='mb-5'>A initiative to promote sustainability</h5>
               <Link to="/SendSnap" className='btn btn-outline-light btn-lg' href='#!' role='button'>
                 <strong>Send Snap</strong>

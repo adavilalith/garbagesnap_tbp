@@ -92,10 +92,11 @@ Let's make Hyderabad shine brighter than ever before!
                 <Col className='display-3 text-center'><strong>Services</strong></Col>
             </Row>
             <Row>
-            <CardGroup className='mb-5 text-center'>
-      <Card >
+      <Row className='mb-5'>
+      <Col>
+      <Card className='text-center'style={{ width: '25rem', height: '20rem' }}>
         <Card.Body>
-          <Card.Title className='display-5'><strong>Send Snap</strong></Card.Title>
+          <Card.Title className='display-5 '><strong>Send Snap</strong></Card.Title>
           <Card.Text>
            This service allows citizens of Hyderabad to raise complaints about garbage pile up. The citizen just sends us a snap and we dispatch a clean up. This is a initiative to maintain a clean city.<br></br>
           <strong> Send Us a Snap by clicking the button below! </strong>
@@ -107,7 +108,9 @@ Let's make Hyderabad shine brighter than ever before!
                     </Link>
         </Card.Footer>
       </Card>
-      <Card>
+      </Col>
+      <Col>
+      <Card className='text-center'style={{ width: '25rem', height: '20rem' }}>
         <Card.Body>
           <Card.Title className='display-5'><strong>Clean Up</strong></Card.Title>
           <Card.Text>
@@ -121,7 +124,9 @@ Let's make Hyderabad shine brighter than ever before!
                     </Link>
         </Card.Footer>
       </Card>
-      <Card>
+      </Col>
+      <Col>
+      <Card className='text-center'style={{ width: '25rem', height: '20rem' }}>
         <Card.Body>
           <Card.Title className='display-5'><strong>Store</strong></Card.Title>
           <Card.Text>
@@ -136,7 +141,8 @@ Let's make Hyderabad shine brighter than ever before!
                 </Link>
         </Card.Footer>
       </Card>
-    </CardGroup>
+      </Col>
+    </Row>
             </Row>
         </Container>
         <Footer/>
