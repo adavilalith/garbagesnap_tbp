@@ -94,7 +94,7 @@ Let's make Hyderabad shine brighter than ever before!
             <Row>
       <Row className='mb-5'>
       <Col>
-      <Card className='text-center'style={{ width: '25rem', height: '20rem' }}>
+      <Card className='text-center my-4'style={{ width: '25rem', height: '20rem' }}>
         <Card.Body>
           <Card.Title className='display-5 '><strong>Send Snap</strong></Card.Title>
           <Card.Text>
@@ -110,7 +110,7 @@ Let's make Hyderabad shine brighter than ever before!
       </Card>
       </Col>
       <Col>
-      <Card className='text-center'style={{ width: '25rem', height: '20rem' }}>
+      <Card className='text-center my-4'style={{ width: '25rem', height: '20rem' }}>
         <Card.Body>
           <Card.Title className='display-5'><strong>Clean Up</strong></Card.Title>
           <Card.Text>
@@ -126,7 +126,7 @@ Let's make Hyderabad shine brighter than ever before!
       </Card>
       </Col>
       <Col>
-      <Card className='text-center'style={{ width: '25rem', height: '20rem' }}>
+      <Card className='text-center my-4'style={{ width: '25rem', height: '20rem' }}>
         <Card.Body>
           <Card.Title className='display-5'><strong>Store</strong></Card.Title>
           <Card.Text>
