@@ -41,23 +41,6 @@ var mapplsPluginObject =  new  mappls_plugin();
             mapObject = mapplsClassObject.Map({id:  "map",properties: mapProps});
         })
 
-        let config = {
-        method: 'get',
-        maxBodyLength: Infinity,
-        url: `https://apis.mappls.com/advancedmaps/v1/a060aaedb17145dca14270d639ba8a9b/rev_geocode?lat=1${location[0]}&lng=${location[1]}`,
-        headers: { }
-        };
-
-        axios.request(config)
-        .then((response) => {
-            
-        console.log(JSON.stringify(response.data));
-        console.log(response.data.formatted_address)
-        setAddress(response.data.formatted_address)
-        })
-        .catch((error) => {
-        console.log(error);
-        });
 
     }
 
