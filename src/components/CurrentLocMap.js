@@ -32,15 +32,28 @@ var mapplsPluginObject =  new  mappls_plugin();
     }
     useEffect(()=>mapinit,[location])
     const mapinit=()=>{
-        console.log(1)
         if(!location){return;}
-        console.log(2)
-        console.log(location)
         mapProps.center=location
         mapplsClassObject.initialize("aa664b33-578f-4657-9f4a-4221b8c507e4",()=>{
             mapObject = mapplsClassObject.Map({id:  "map",properties: mapProps});
         })
 
+        
+
+        let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `https://apis.mappls.com/advancedmaps/v1/a060aaedb17145dca14270d639ba8a9b/rev_geocode?lat=${location[0]}&lng= ${location[1]}`,
+        headers: { }
+        };
+        if(address){return}
+        axios.request(config)
+        .then((response) => {
+        setAddress(response.data.results[0].formatted_address);
+        })
+        .catch((error) => {
+        console.log(error);
+        });
 
     }
 
