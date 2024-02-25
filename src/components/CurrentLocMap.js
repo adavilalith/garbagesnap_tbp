@@ -32,6 +32,8 @@ var mapplsPluginObject =  new  mappls_plugin();
     }
     useEffect(()=>mapinit,[location])
     const mapinit=()=>{
+        if(address){return}
+
         if(!location){return;}
         mapProps.center=location
         mapplsClassObject.initialize("aa664b33-578f-4657-9f4a-4221b8c507e4",()=>{
@@ -46,7 +48,6 @@ var mapplsPluginObject =  new  mappls_plugin();
         url: `https://apis.mappls.com/advancedmaps/v1/a060aaedb17145dca14270d639ba8a9b/rev_geocode?lat=${location[0]}&lng= ${location[1]}`,
         headers: { }
         };
-        if(address){return}
         axios.request(config)
         .then((response) => {
         setAddress(response.data.results[0].formatted_address);
