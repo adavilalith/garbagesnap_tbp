@@ -5,14 +5,14 @@ import { Link,useNavigate } from "react-router-dom";
 import {app, auth} from '../config/firebase'
 import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth'
 import {Context} from '../App.js'
-import { getDocs, addDoc, collection, collectionGroup } from 'firebase/firestore';
+import { getDocs, addDoc, collection, collectionGroup, query ,where } from 'firebase/firestore';
 import { db } from '../config/firebase';
 export default function SignUp() {
 
     const navigate=useNavigate()
     const [user,setUser,userDB,setUserDB,cart,setCart]=useContext(Context);
     const createUser = async ()=>{
-        if(email===""||password===""||confirmPassword===""){
+        if(userName==""||email===""||password===""||confirmPassword===""){
             alert("please fill the fields")
             return;
         }
@@ -46,14 +46,32 @@ const handleSignUpDB=async()=>{
   // console.log("user db fetching start",auth.currentUser.uid)s
   if(auth.currentUser){
         const data = await addDoc(collection(db,'Users'),{
-          uid: auth.currentUser.uid
+          uid: auth.currentUser.uid,
+          email: email,
+          userName: userName
         })
-        setUserDB(data)
-        console.log("user db fetching success")
+        handleSignInDB()
   }
   else{
   console.log("user db fetching fail no user")
   }
+}
+const handleSignInDB=async()=>{
+  console.log("userdb signin start")
+  if(auth.currentUser){
+      const q = query(collection(db,'Users'),where("uid","==",auth.currentUser.uid))
+      const userData = await getDocs(q);
+      // console.log(userData)
+    userData.forEach((doc)=>console.log(doc))
+      userData.forEach((doc)=>{setUserDB({...doc.data(), id : doc.id})})
+      console.log("userdb signin success")
+
+    }
+    else{
+      console.log("userdb load failed no user")
+    }
+
+
 }
 
       
@@ -65,7 +83,7 @@ const handleSignUpDB=async()=>{
       }
     },[userDB])
 
-
+    const [userName,setUserName] =  useState("")
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [confirmPassword,setConfirmPassword] = useState("");
@@ -83,6 +101,12 @@ const handleSignUpDB=async()=>{
                   <p className=" mb-5">Please create your login and password</p>
                   <div className="mb-3">
                     <Form>
+                    <Form.Group className="mb-3" controlId="formBasicUserName">
+                        <Form.Label className="text-center">
+                          User Name
+                        </Form.Label>
+                        <Form.Control type="text" placeholder="Enter Name"  onChange={(e)=>setUserName(e.target.value)}/>
+                      </Form.Group>
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="text-center">
                           Email address

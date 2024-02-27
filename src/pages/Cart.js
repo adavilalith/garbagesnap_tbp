@@ -22,6 +22,7 @@ export default function Cart() {
         }
         await getDocs(collection(db,`Users/${userDB.id}/cart`)).then((temp)=>setCart(temp.docs.map((doc)=>({...doc.data(), id : doc.id}))))
         console.log("fetch end",cart)
+        console.log(cart)
     }
     const updateCartProducts=async()=>{
         const ids=cart.map((p)=>p.productID)

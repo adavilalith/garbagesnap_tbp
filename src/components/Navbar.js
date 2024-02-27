@@ -33,12 +33,12 @@ export default function GarbageSnapNavbar() {
   };
 
   const [user, setUser, userDB, setUserDB] = useContext(Context);
-
+  console.log(userDB)
   const AccountOrSignIn = () => {
     if (user) {
       return (
         <>
-        <NavDropdown title="Account" id="collapsible-nav-dropdown">
+        <NavDropdown title={(userDB)?`${userDB.userName}`:'account'} id="collapsible-nav-dropdown">
           <NavDropdown.Item><Link to="/Snaps" style={{textDecoration:'none',color:'black'}}>Snaps</Link></NavDropdown.Item>
           <NavDropdown.Item ><Link to="/Bookings" style={{textDecoration:'none',color:'black'}}>Bookings</Link></NavDropdown.Item>
           <NavDropdown.Item ><Link to="/Orders" style={{textDecoration:'none',color:'black'}}>Orders</Link></NavDropdown.Item>
