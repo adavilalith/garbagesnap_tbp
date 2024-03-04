@@ -114,7 +114,7 @@ Let's make Hyderabad shine brighter than ever before!
         <Card.Body>
           <Card.Title className='display-5'><strong>Clean Up</strong></Card.Title>
           <Card.Text>
-            We offer affordable cleaning and garbage pick up services in both the commercial and industrial sectors. Need to dispose of some waste or get mess cleaned up?
+            We offer affordable cleaning and garbage pick up services in both the commercial and industrial sectors. Need to dispose of some waste or get mess cleaned up?<br />
             <strong>Book a Clean Up or Pick Up!</strong>
           </Card.Text>
         </Card.Body>
@@ -130,9 +130,7 @@ Let's make Hyderabad shine brighter than ever before!
         <Card.Body>
           <Card.Title className='display-5'><strong>Store</strong></Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
+          Step into our store for a world of sustainable treasures. From stylish fashion to unique home decor, discover eco-conscious products that make a difference. Join us in promoting sustainability with every purchase! <br /><strong>Visit Our Store!</strong>
           </Card.Text>
         </Card.Body>
         <Card.Footer>
