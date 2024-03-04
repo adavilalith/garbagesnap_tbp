@@ -6,12 +6,13 @@ import { Link } from 'react-router-dom';
 import { db } from '../config/firebase';
 import { addDoc,collection } from 'firebase/firestore';
 import DummyModal from './DummyModal';
+import CurrentLocMap from './CurrentLocMap';
 
 export default function CleanUpForm(props) {
 
    const [user]=useContext(Context)
    const btnRef=useRef()
-
+   const [location,setLocation] = useState("")
    const [show, setShow] = useState(false);
 
    const handleClose = () => setShow(false);
@@ -43,6 +44,7 @@ export default function CleanUpForm(props) {
           bookingEmail: email,
           quantity: quantity,
           CleanUpTier: CleanUpTier,
+          location: location,
           time: time,
           date: date,
           status: 0 
@@ -157,10 +159,8 @@ export default function CleanUpForm(props) {
       <div className="container">
         <h1><b>Booking Details</b></h1>
         <div className="row mt-4">
-            <div className="col d-flex justify-content-start ">
-            <button type="button" onClick={getLocation} className="btn btn-dark">Get Location</button>
-            </div>
-          </div>
+            <CurrentLocMap loc={[location,setLocation]}/>
+        </div>
         <div className="row">
           <div className="col">
             <label htmlFor="timePicker" className='mx-2'>Time</label>

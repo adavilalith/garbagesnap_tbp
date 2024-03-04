@@ -41,7 +41,6 @@ var mapplsPluginObject =  new  mappls_plugin();
         })
 
         
-
         let config = {
         method: 'get',
         maxBodyLength: Infinity,
