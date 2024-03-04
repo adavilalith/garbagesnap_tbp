@@ -18,7 +18,7 @@ import CurrentLocMap from '../components/CurrentLocMap'
 export default function SendSnap() {
     const [user,setUser]=useContext(Context)
     const date = new Date();
-
+    const [uploadState,setUploadState] = useState("Send Snap")
     const [imgUpload,setImgUpload]=useState(null);
     
     const [imgURL,setImgURL]=useState("");
@@ -70,10 +70,15 @@ export default function SendSnap() {
             status: 0,
             userID : (user===false)?"":user.uid
             });
+        setUploadState('Send Snap')
         btnRef.current.click();
         return;
     },[imgURL])
     const uploadComplaint= async()=>{
+        if (uploadState=='Uploading'){
+            return;
+        }
+        setUploadState('Uploading')
         if(location===""){
             alert("please allow location access");
             return;
@@ -114,7 +119,7 @@ export default function SendSnap() {
                     </Row>
                     <Row className='my-5'>
                         <Col className='d-flex justify-content-center align-items-center text-center'>
-                            <Button className='btn-dark' onClick={uploadComplaint} ><h3>Send Snap</h3></Button>
+                            <Button className='btn-dark' onClick={uploadComplaint} ><h3>{uploadState}</h3></Button>
                         </Col>
                     </Row>
                 </Col>
