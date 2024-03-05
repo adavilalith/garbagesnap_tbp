@@ -30,7 +30,7 @@ export default function App() {
           <Row className='mt-2 '>
             <a href='' className='my-2' style={{textDecoration:'none',color:'white'}}>K Karthik</a>
             <a href='' className='my-2' style={{textDecoration:'none',color:'white'}}>K Sai Akshith Reddy</a>
-            <a href='' className='my-2' style={{textDecoration:'none',color:'white'}}>Adavi Lalith</a>
+            <a href='https://www.linkedin.com/in/lalith-adavi-284378274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' target='_balnk' className='my-2' style={{textDecoration:'none',color:'white'}}>Adavi Lalith</a>
           </Row>
         </Col>
       </Row>
