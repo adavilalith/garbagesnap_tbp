@@ -17,8 +17,8 @@ export default function DragDropFile(props) {
             var url = URL.createObjectURL(imgUpload);
             return ( 
                 <>
-                <Container className='bg-light m-2 d-flex flex-col justify-content-center align-items-center text-center' style={{width:'',height:'300px', border: '2px dashed #111',borderRadius:'10px'}}>
-                    <Row className="d-flex justify-content-center align-items-center text-center">
+                <Container className='bg-light m-2 text-center' style={{width:'',height:'300px', border: '2px dashed #111',borderRadius:'10px'}}>
+                    <Row className="d-flex justify-content-center align-items-center text-center mx-0">
                         <img src={url} style={{height:'300px',width:'auto'}}></img>
                     </Row>
                     <Row>
