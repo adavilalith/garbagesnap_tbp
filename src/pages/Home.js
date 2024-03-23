@@ -35,6 +35,31 @@ Join us in our mission to transform Hyderabad into a cleaner, healthier, and mor
 Let's make Hyderabad shine brighter than ever before!
             </p>
         </div>
+        {/* how to use garbage snap*/ }
+        <Container className='d-flex flex-wrap justify-content-center my-5'>
+          <Row >
+            <p className='display-3 text-center'><strong>How to Use GarbageSnap?</strong></p>
+          </Row>
+          
+            <div className='ms-4 me-1'>
+              <Row className=''>
+                <p className='fs-5'><strong>Step 1: </strong>Go to the SendSnap page up using the navbar or clicking on the send snap button above. <br /> select the image of the garbage you have taken</p>
+              </Row>
+              <Row className=''>
+                <p className='fs-5'><strong>Step 2: </strong>select the geolocation of where the picture was taken by clicking the get geolocation button</p>
+              </Row>
+              <Row className=''>
+                <p className='fs-5'><strong>Step 3: </strong>add any desciption about the garbage if necessary in the textbox</p>
+              </Row>
+              <Row className=''>
+                <p className='fs-5'><strong>Step 4: </strong>click on submit and wait for the uploaded pop up.</p>
+              </Row>
+              <Row>
+                <p className='fs-5'>We will be cleaning up the garbage as soon as possible!</p>
+              </Row>
+            </div>
+          
+        </Container>
         {/* <GarbageSnapCarousel/> */}
         <div className='display-3 text-center'><strong>Achivements</strong></div>
         <Container className='my-4 d-flex justify-content-center align-items-center h-100 text-center'>
@@ -92,9 +117,8 @@ Let's make Hyderabad shine brighter than ever before!
                 <Col className='display-3 text-center'><strong>Services</strong></Col>
             </Row>
             <Row>
-      <Row className='mb-5'>
-      <Col>
-      <Card className='text-center my-4'style={{ width: '25rem', height: '20rem' }}>
+      <Col className=''>
+      <Card className='text-center my-4'style={{ width: '22rem', height: '20rem' }}>
         <Card.Body>
           <Card.Title className='display-5 '><strong>Send Snap</strong></Card.Title>
           <Card.Text>
@@ -110,7 +134,7 @@ Let's make Hyderabad shine brighter than ever before!
       </Card>
       </Col>
       <Col>
-      <Card className='text-center my-4'style={{ width: '25rem', height: '20rem' }}>
+      <Card className='text-center my-4'style={{ width: '22rem', height: '20rem' }}>
         <Card.Body>
           <Card.Title className='display-5'><strong>Clean Up</strong></Card.Title>
           <Card.Text>
@@ -126,7 +150,7 @@ Let's make Hyderabad shine brighter than ever before!
       </Card>
       </Col>
       <Col>
-      <Card className='text-center my-4'style={{ width: '25rem', height: '20rem' }}>
+      <Card className='text-center my-4'style={{ width: '22rem', height: '20rem' }}>
         <Card.Body>
           <Card.Title className='display-5'><strong>Store</strong></Card.Title>
           <Card.Text>
@@ -141,7 +165,6 @@ Let's make Hyderabad shine brighter than ever before!
       </Card>
       </Col>
     </Row>
-            </Row>
         </Container>
         <Footer/>
 
